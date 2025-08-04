@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - buildshift.dev</title>
+    <meta name="description" content="Explore open-source projects and development tools from BuildShift - serverless applications, Python utilities, and developer productivity tools.">
+    
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/html-pages.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <span class="logo-text">
+                        <span class="brackets">{</span>buildshift.dev<span class="brackets">}</span>
+                    </span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="blog/" class="nav-link">Blog</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="projects-title">
+                    <span class="logo-inline">
+                        <span class="brackets">{</span>buildshift.dev<span class="brackets">}</span>
+                    </span>
+                    Projects
+                </h1>
+                <p class="projects-subtitle">
+                    Open-source tools, libraries, and applications designed to enhance 
+                    serverless development and developer productivity. All projects are 
+                    available on GitHub under the BuildShift organization.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Active Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">GitHub Stars</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Contributors</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Categories -->
+    <section class="project-categories">
+        <div class="container">
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="serverless">Serverless</button>
+                <button class="filter-btn" data-filter="python">Python Tools</button>
+                <button class="filter-btn" data-filter="devtools">Dev Tools</button>
+                <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects-section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-showcase">
+                <!-- Serverless Blog Platform -->
+                <div class="project-showcase" data-category="serverless">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift.dev/serverless-blog</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment"># AWS Serverless Blog Platform</span>
+<span class="keyword">import</span> <span class="string">boto3</span>
+<span class="keyword">from</span> <span class="string">aws_lambda_powertools</span> <span class="keyword">import</span> Logger
+
+<span class="function">def</span> <span class="function-name">lambda_handler</span>(<span class="param">event</span>, <span class="param">context</span>):
+    <span class="comment"># Complete blogging solution with:</span>
+    <span class="comment"># - User authentication</span>
+    <span class="comment"># - Content management</span>
+    <span class="comment"># - Auto scaling</span>
+    <span class="keyword">return</span> {
+        <span class="string">'statusCode'</span>: <span class="number">200</span>,
+        <span class="string">'body'</span>: <span class="string">'Blog platform running!'</span>
+    }</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>AWS Serverless Blog Platform</h3>
+                                <p class="project-description">
+                                    A complete blogging solution built with AWS Lambda, API Gateway, and DynamoDB. 
+                                    Features user authentication, content management, and automatic scaling. 
+                                    Perfect for developers who want a cost-effective, scalable blogging platform.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-lock"></i>
+                                <span>JWT Authentication</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-edit"></i>
+                                <span>Rich Text Editor</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Analytics Dashboard</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Cost: &lt;$5/month</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">DynamoDB</span>
+                            <span class="tech-tag">API Gateway</span>
+                            <span class="tech-tag">CloudFormation</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift.dev/serverless-blog" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="#" target="_blank" class="btn btn--primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Development Tools -->
+                <div class="project-showcase" data-category="python">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift.dev/python-dev-tools</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment"># Python Development Tools Suite</span>
+<span class="keyword">from</span> <span class="string">buildshift.testing</span> <span class="keyword">import</span> aws_fixtures
+<span class="keyword">from</span> <span class="string">buildshift.formatters</span> <span class="keyword">import</span> smart_format
+
+<span class="comment"># Custom pytest fixtures for AWS testing</span>
+<span class="decorator">@aws_fixtures.lambda_context</span>
+<span class="function">def</span> <span class="function-name">test_lambda_function</span>(<span class="param">context</span>):
+    <span class="comment"># Automated testing with real AWS context</span>
+    <span class="keyword">assert</span> context.function_name == <span class="string">'test-function'</span>
+
+<span class="comment"># Smart code formatting</span>
+smart_format.<span class="function-name">apply_standards</span>(<span class="param">project_path</span>)</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>Python Development Tools Suite</h3>
+                                <p class="project-description">
+                                    Comprehensive collection of Python utilities and tools for development workflow optimization. 
+                                    Includes code formatters, testing frameworks, automation scripts, and productivity enhancers 
+                                    specifically designed for modern Python development.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-vial"></i>
+                                <span>AWS Test Fixtures</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-magic"></i>
+                                <span>Smart Formatting</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Automation Scripts</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gauge"></i>
+                                <span>Performance Profiling</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">pytest</span>
+                            <span class="tech-tag">Black</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Poetry</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift.dev/python-dev-tools" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://pypi.org/project/buildshift-dev-tools/" target="_blank" class="btn btn--primary">
+                                <i class="fab fa-python"></i>
+                                PyPI Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VS Code Extensions -->
+                <div class="project-showcase" data-category="devtools">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift.dev/vscode-productivity</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment">// VS Code Productivity Extensions</span>
+<span class="keyword">import</span> * <span class="keyword">as</span> vscode <span class="keyword">from</span> <span class="string">'vscode'</span>;
+
+<span class="comment">// Smart snippets for serverless development</span>
+<span class="keyword">export</span> <span class="function">function</span> <span class="function-name">activate</span>(<span class="param">context</span>: vscode.ExtensionContext) {
+    <span class="comment">// Auto-generate Lambda boilerplate</span>
+    <span class="keyword">const</span> lambdaSnippet = vscode.commands
+        .<span class="function-name">registerCommand</span>(<span class="string">'buildshift.createLambda'</span>, () => {
+            <span class="comment">// Generate production-ready Lambda function</span>
+        });
+    
+    context.subscriptions.<span class="function-name">push</span>(lambdaSnippet);
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>VS Code Productivity Extensions</h3>
+                                <p class="project-description">
+                                    Custom VS Code extensions pack designed to enhance developer productivity with 
+                                    smart snippets, automated workflows, and environment setup. Includes serverless 
+                                    boilerplate generation, AWS resource management, and development shortcuts.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Smart Snippets</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Auto Workflows</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>AWS Integration</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-keyboard"></i>
+                                <span>Custom Shortcuts</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">VS Code API</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Webpack</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift.dev/vscode-productivity" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://marketplace.visualstudio.com/items?itemName=buildshift.productivity-pack" target="_blank" class="btn btn--primary">
+                                <i class="fas fa-external-link-alt"></i>
+                                VS Marketplace
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Projects Grid -->
+    <section class="all-projects">
+        <div class="container">
+            <h2 class="section-title">All Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card" data-category="infrastructure">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>CDK Constructs Library</h3>
+                    <p>Reusable AWS CDK constructs for common serverless patterns and best practices.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">AWS CDK</span>
+                        <span class="tech-tag">CloudFormation</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="serverless">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Serverless Monitoring Dashboard</h3>
+                    <p>Real-time monitoring solution for serverless applications with cost tracking and alerting.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS CloudWatch</span>
+                        <span class="tech-tag">Lambda</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="python">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fab fa-python"></i></a>
+                        </div>
+                    </div>
+                    <h3>AWS SDK Helpers</h3>
+                    <p>Python library with helper functions for common AWS SDK operations and error handling.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">boto3</span>
+                        <span class="tech-tag">AWS SDK</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="infrastructure">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Deployment Pipeline Templates</h3>
+                    <p>CI/CD pipeline templates for serverless apps with automated testing and multi-environment deployments.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">AWS CDK</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="devtools">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Dev Environment Setup</h3>
+                    <p>Automated scripts for setting up consistent development environments across different machines.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Shell Scripts</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">VS Code</span>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="serverless">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Lambda Data Processing</h3>
+                    <p>Scalable data processing solutions using AWS Lambda for ETL operations and analytics.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS Lambda</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">S3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution CTA -->
+    <section class="contribution-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Contribute to BuildShift</h2>
+                <p>
+                    All BuildShift projects welcome contributions from developers of all skill levels. 
+                    Whether it's bug reports, feature requests, documentation improvements, or code contributions, 
+                    your involvement helps make these tools better for everyone.
+                </p>
+                
+                <div class="contribution-types">
+                    <div class="contribution-item">
+                        <i class="fas fa-bug"></i>
+                        <span>Report Issues</span>
+                    </div>
+                    <div class="contribution-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Suggest Features</span>
+                    </div>
+                    <div class="contribution-item">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Submit PRs</span>
+                    </div>
+                    <div class="contribution-item">
+                        <i class="fas fa-book"></i>
+                        <span>Improve Docs</span>
+                    </div>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="https://github.com/buildshift.dev" target="_blank" class="btn btn--primary">
+                        <i class="fab fa-github"></i>
+                        Explore on GitHub
+                    </a>
+                    <a href="contact.html" class="btn btn--outline">
+                        <i class="fas fa-envelope"></i>
+                        Discuss Ideas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">
+                        <span class="brackets">{</span>buildshift.dev<span class="brackets">}</span>
+                    </span>
+                    <p>Building the future, one commit at a time.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="blog/">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://github.com/markecdc" target="_blank">GitHub</a></li>
+                            <li><a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://twitter.com/your-handle" target="_blank">Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 buildshift.dev. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/buildshift.js"></script>
+    <script>
+        // Project filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.style.opacity = '1';
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
