@@ -49,27 +49,12 @@
     background: transparent !important;
     -webkit-background-clip: initial !important;
     background-clip: initial !important;
-    animation: none !important; /* Disable animation that causes flicker */
-    transform: none !important;
-    will-change: auto !important;
-  }
-  
-  /* Ensure logo text doesn't affect brackets */
-  .logo-text,
-  .logo-main,
-  .logo-inline {
-    position: relative;
-  }
-  
-  .logo-text .brackets,
-  .logo-main .brackets,
-  .logo-inline .brackets {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
     animation: none !important;
+    will-change: auto !important;
+    display: inline !important;
+    position: static !important;
+    vertical-align: baseline !important;
     transform: none !important;
-    opacity: 1 !important;
   }
 }
 
@@ -80,23 +65,10 @@
     -webkit-text-fill-color: #06b6d4 !important;
     background: none !important;
     animation: none !important;
-    transform: translateZ(0); /* Force hardware acceleration */
+    display: inline !important;
+    position: static !important;
+    vertical-align: baseline !important;
     -webkit-font-smoothing: antialiased;
-    -webkit-backface-visibility: hidden;
-  }
-}
-
-/* Specific fix for Safari mobile flickering issue */
-@supports (-webkit-touch-callout: none) and (not (translate: none)) {
-  .brackets {
-    position: relative !important;
-    display: inline-block !important;
-    -webkit-transform: translate3d(0,0,0) !important;
-    transform: translate3d(0,0,0) !important;
-    -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important;
-    -webkit-perspective: 1000 !important;
-    perspective: 1000 !important;
   }
 }
 
