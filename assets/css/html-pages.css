@@ -41,6 +41,41 @@
   box-sizing: border-box;
 }
 
+/* iOS Safari fixes for brackets rendering */
+@supports (-webkit-touch-callout: none) {
+  .brackets {
+    color: var(--bs-accent) !important;
+    -webkit-text-fill-color: var(--bs-accent) !important;
+    background: transparent !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+  }
+  
+  /* Ensure logo text doesn't affect brackets */
+  .logo-text,
+  .logo-main,
+  .logo-inline {
+    position: relative;
+  }
+  
+  .logo-text .brackets,
+  .logo-main .brackets,
+  .logo-inline .brackets {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+  }
+}
+
+/* Additional fallback for all mobile webkit browsers */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .brackets {
+    color: #06b6d4 !important;
+    -webkit-text-fill-color: #06b6d4 !important;
+    background: none !important;
+  }
+}
+
 body {
   font-family: var(--bs-font-family);
   background: var(--bs-dark-bg);
@@ -90,9 +125,12 @@ body {
 }
 
 .nav-logo .brackets {
-  color: var(--bs-accent);
+  color: var(--bs-accent) !important;
   animation: pulse-gentle 3s ease-in-out infinite;
-  -webkit-text-fill-color: var(--bs-accent);
+  -webkit-text-fill-color: var(--bs-accent) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
 }
 
 .nav-menu {
@@ -317,9 +355,12 @@ body {
 }
 
 .logo-main .brackets {
-  color: var(--bs-accent);
+  color: var(--bs-accent) !important;
   animation: pulse-gentle 2s ease-in-out infinite;
-  -webkit-text-fill-color: var(--bs-accent);
+  -webkit-text-fill-color: var(--bs-accent) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
 }
 
 /* Tagline Cycling Animation */
@@ -853,8 +894,11 @@ body {
 }
 
 .footer-logo .brackets {
-  color: var(--bs-accent);
-  -webkit-text-fill-color: var(--bs-accent);
+  color: var(--bs-accent) !important;
+  -webkit-text-fill-color: var(--bs-accent) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
 }
 
 .footer-logo p {
@@ -974,9 +1018,12 @@ body {
 }
 
 .logo-inline .brackets {
-  color: var(--bs-accent);
+  color: var(--bs-accent) !important;
   animation: pulse-gentle 3s ease-in-out infinite;
-  -webkit-text-fill-color: var(--bs-accent);
+  -webkit-text-fill-color: var(--bs-accent) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
 }
 
 .developer-badges {
