@@ -7,7 +7,33 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillBars();
     initScrollEffects();
     initMobileMenu();
+    fixSafariBrackets();
 });
+
+// Safari iOS bracket fix
+function fixSafariBrackets() {
+    // Detect Safari iOS
+    const isSafariIOS = /Safari/.test(navigator.userAgent) && /iPhone|iPad/.test(navigator.userAgent);
+    
+    if (isSafariIOS) {
+        const brackets = document.querySelectorAll('.brackets');
+        brackets.forEach(bracket => {
+            // Force hardware acceleration and prevent flicker
+            bracket.style.transform = 'translateZ(0)';
+            bracket.style.webkitTransform = 'translateZ(0)';
+            bracket.style.animation = 'none';
+            bracket.style.webkitAnimation = 'none';
+            bracket.style.backfaceVisibility = 'hidden';
+            bracket.style.webkitBackfaceVisibility = 'hidden';
+            bracket.style.perspective = '1000px';
+            bracket.style.webkitPerspective = '1000px';
+            
+            // Ensure consistent rendering
+            bracket.style.willChange = 'auto';
+            bracket.style.contain = 'layout style paint';
+        });
+    }
+}
 
 // Navigation scroll effects
 function initNavigation() {
