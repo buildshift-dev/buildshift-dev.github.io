@@ -29,8 +29,8 @@
   --bs-shadow-hover: 0 8px 30px rgba(59, 130, 246, 0.2);
   
   /* Animations */
-  --bs-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --bs-transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --bs-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --bs-transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== RESET & BASE ===== */
@@ -378,7 +378,7 @@ body {
   color: var(--bs-dark-text-muted);
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tagline.active {
@@ -637,7 +637,7 @@ body {
   background: var(--bs-gradient);
   width: 0%;
   border-radius: 3px;
-  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
@@ -2058,7 +2058,7 @@ body {
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
   }
   
