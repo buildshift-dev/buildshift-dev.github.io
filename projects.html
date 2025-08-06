@@ -76,16 +76,20 @@
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">15+</div>
+                        <div class="stat-number">2</div>
                         <div class="stat-label">Active Projects</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">GitHub Stars</div>
+                        <!-- <div class="stat-number">0</div>
+                        <div class="stat-label">GitHub Stars</div> -->
+                        <div class="stat-number">Growing</div>
+                        <div class="stat-label">Community</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Contributors</div>
+                        <!-- <div class="stat-number">1</div>
+                        <div class="stat-label">Contributors</div> -->
+                        <div class="stat-number">Open Source</div>
+                        <div class="stat-label">Projects</div>
                     </div>
                 </div>
             </div>
@@ -111,7 +115,89 @@
             <h2 class="section-title">Featured Projects</h2>
             
             <div class="projects-showcase">
-                <!-- Serverless Blog Platform -->
+                <!-- Terraform Tutorials -->
+                <div class="project-showcase" data-category="infrastructure">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift-dev/tf-tutorial</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment"># Terraform AWS Lambda + S3 Tutorial</span>
+<span class="keyword">resource</span> <span class="string">"aws_lambda_function"</span> <span class="string">"example"</span> {
+  <span class="property">filename</span>      = <span class="string">"lambda_function.zip"</span>
+  <span class="property">function_name</span> = <span class="string">"example_lambda"</span>
+  <span class="property">role</span>         = <span class="string">aws_iam_role.lambda_role.arn</span>
+  <span class="property">handler</span>      = <span class="string">"lambda_function.lambda_handler"</span>
+  <span class="property">runtime</span>      = <span class="string">"python3.11"</span>
+}
+
+<span class="keyword">resource</span> <span class="string">"aws_s3_bucket"</span> <span class="string">"example"</span> {
+  <span class="property">bucket</span> = <span class="string">"my-tf-example-bucket"</span>
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>Terraform AWS Lambda + S3 Tutorials</h3>
+                                <p class="project-description">
+                                    Complete Terraform tutorials with two learning paths: beginner-friendly quick start 
+                                    and production-ready patterns. Perfect for learning Infrastructure as Code with 
+                                    real AWS Lambda and S3 integration examples.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Two Learning Paths</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Quick Start Guide</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-cogs"></i>
+                                <span>Production Patterns</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Setup Scripts</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">S3</span>
+                            <span class="tech-tag">Infrastructure as Code</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift-dev/tf-tutorial" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://github.com/buildshift-dev/tf-tutorial" class="btn btn--primary">
+                                <i class="fas fa-book"></i>
+                                Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AWS Egress Estimator -->
                 <div class="project-showcase" data-category="serverless">
                     <div class="project-preview">
                         <div class="preview-header">
@@ -120,164 +206,82 @@
                                 <span class="dot yellow"></span>
                                 <span class="dot green"></span>
                             </div>
-                            <span class="terminal-title">buildshift.dev/serverless-blog</span>
+                            <span class="terminal-title">buildshift-dev/aws-egress-estimate</span>
                         </div>
                         <div class="code-preview">
-                            <pre><code><span class="comment"># AWS Serverless Blog Platform</span>
-<span class="keyword">import</span> <span class="string">boto3</span>
-<span class="keyword">from</span> <span class="string">aws_lambda_powertools</span> <span class="keyword">import</span> Logger
-
-<span class="function">def</span> <span class="function-name">lambda_handler</span>(<span class="param">event</span>, <span class="param">context</span>):
-    <span class="comment"># Complete blogging solution with:</span>
-    <span class="comment"># - User authentication</span>
-    <span class="comment"># - Content management</span>
-    <span class="comment"># - Auto scaling</span>
-    <span class="keyword">return</span> {
-        <span class="string">'statusCode'</span>: <span class="number">200</span>,
-        <span class="string">'body'</span>: <span class="string">'Blog platform running!'</span>
-    }</code></pre>
+                            <pre><code><span class="comment">// AWS Egress Cost Calculator</span>
+<span class="keyword">const</span> egressCosts = {
+  <span class="property">internet</span>: {
+    <span class="property">freeThreshold</span>: <span class="number">100</span>, <span class="comment">// GB</span>
+    <span class="property">rates</span>: [
+      { <span class="property">threshold</span>: <span class="number">10000</span>, <span class="property">rate</span>: <span class="number">0.09</span> },
+      { <span class="property">threshold</span>: <span class="number">50000</span>, <span class="property">rate</span>: <span class="number">0.085</span> },
+      { <span class="property">threshold</span>: <span class="number">150000</span>, <span class="property">rate</span>: <span class="number">0.07</span> }
+    ]
+  },
+  <span class="property">interAZ</span>: <span class="number">0.01</span>,
+  <span class="property">interRegion</span>: <span class="number">0.02</span>
+};</code></pre>
                         </div>
                     </div>
                     
                     <div class="project-details">
                         <div class="project-header">
                             <div class="project-icon">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <div class="project-meta">
-                                <h3>AWS Serverless Blog Platform</h3>
-                                <p class="project-description">
-                                    A complete blogging solution built with AWS Lambda, API Gateway, and DynamoDB. 
-                                    Features user authentication, content management, and automatic scaling. 
-                                    Perfect for developers who want a cost-effective, scalable blogging platform.
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="project-features">
-                            <div class="feature-item">
-                                <i class="fas fa-lock"></i>
-                                <span>JWT Authentication</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-edit"></i>
-                                <span>Rich Text Editor</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Analytics Dashboard</span>
-                            </div>
-                            <div class="feature-item">
                                 <i class="fas fa-dollar-sign"></i>
-                                <span>Cost: &lt;$5/month</span>
-                            </div>
-                        </div>
-                        
-                        <div class="tech-stack">
-                            <span class="tech-tag">AWS Lambda</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">DynamoDB</span>
-                            <span class="tech-tag">API Gateway</span>
-                            <span class="tech-tag">CloudFormation</span>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="https://github.com/buildshift.dev/serverless-blog" target="_blank" class="btn btn--outline">
-                                <i class="fab fa-github"></i>
-                                View Code
-                            </a>
-                            <a href="#" target="_blank" class="btn btn--primary">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Python Development Tools -->
-                <div class="project-showcase" data-category="python">
-                    <div class="project-preview">
-                        <div class="preview-header">
-                            <div class="terminal-dots">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="terminal-title">buildshift.dev/python-dev-tools</span>
-                        </div>
-                        <div class="code-preview">
-                            <pre><code><span class="comment"># Python Development Tools Suite</span>
-<span class="keyword">from</span> <span class="string">buildshift.testing</span> <span class="keyword">import</span> aws_fixtures
-<span class="keyword">from</span> <span class="string">buildshift.formatters</span> <span class="keyword">import</span> smart_format
-
-<span class="comment"># Custom pytest fixtures for AWS testing</span>
-<span class="decorator">@aws_fixtures.lambda_context</span>
-<span class="function">def</span> <span class="function-name">test_lambda_function</span>(<span class="param">context</span>):
-    <span class="comment"># Automated testing with real AWS context</span>
-    <span class="keyword">assert</span> context.function_name == <span class="string">'test-function'</span>
-
-<span class="comment"># Smart code formatting</span>
-smart_format.<span class="function-name">apply_standards</span>(<span class="param">project_path</span>)</code></pre>
-                        </div>
-                    </div>
-                    
-                    <div class="project-details">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fab fa-python"></i>
                             </div>
                             <div class="project-meta">
-                                <h3>Python Development Tools Suite</h3>
+                                <h3>AWS Egress Cost Estimator</h3>
                                 <p class="project-description">
-                                    Comprehensive collection of Python utilities and tools for development workflow optimization. 
-                                    Includes code formatters, testing frameworks, automation scripts, and productivity enhancers 
-                                    specifically designed for modern Python development.
+                                    Interactive HTML-based tool for visualizing and analyzing AWS network egress costs. 
+                                    Helps optimize network architecture for cost efficiency with configurable regional 
+                                    pricing and network topology diagrams.
                                 </p>
                             </div>
                         </div>
                         
                         <div class="project-features">
                             <div class="feature-item">
-                                <i class="fas fa-vial"></i>
-                                <span>AWS Test Fixtures</span>
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Cost Visualization</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fas fa-magic"></i>
-                                <span>Smart Formatting</span>
+                                <i class="fas fa-globe"></i>
+                                <span>Regional Pricing</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fas fa-robot"></i>
-                                <span>Automation Scripts</span>
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Network Diagrams</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fas fa-gauge"></i>
-                                <span>Performance Profiling</span>
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Educational Tool</span>
                             </div>
                         </div>
                         
                         <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">pytest</span>
-                            <span class="tech-tag">Black</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Poetry</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">Cost Optimization</span>
+                            <span class="tech-tag">Interactive Reports</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://github.com/buildshift.dev/python-dev-tools" target="_blank" class="btn btn--outline">
+                            <a href="https://github.com/buildshift-dev/aws-egress-estimate" target="_blank" class="btn btn--outline">
                                 <i class="fab fa-github"></i>
                                 View Code
                             </a>
-                            <a href="https://pypi.org/project/buildshift-dev-tools/" target="_blank" class="btn btn--primary">
-                                <i class="fab fa-python"></i>
-                                PyPI Package
+                            <a href="https://github.com/buildshift-dev/aws-egress-estimate" class="btn btn--primary">
+                                <i class="fas fa-book"></i>
+                                Documentation
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- VS Code Extensions -->
-                <div class="project-showcase" data-category="devtools">
+                <!-- Coming Soon: More Projects -->
+                <div class="project-showcase coming-soon" data-category="devtools" style="opacity: 0.6; border: 2px dashed #dee2e6;">
                     <div class="project-preview">
                         <div class="preview-header">
                             <div class="terminal-dots">
@@ -285,22 +289,21 @@ smart_format.<span class="function-name">apply_standards</span>(<span class="par
                                 <span class="dot yellow"></span>
                                 <span class="dot green"></span>
                             </div>
-                            <span class="terminal-title">buildshift.dev/vscode-productivity</span>
+                            <span class="terminal-title">buildshift-dev/coming-soon</span>
                         </div>
                         <div class="code-preview">
-                            <pre><code><span class="comment">// VS Code Productivity Extensions</span>
-<span class="keyword">import</span> * <span class="keyword">as</span> vscode <span class="keyword">from</span> <span class="string">'vscode'</span>;
+                            <pre><code><span class="comment">// More projects in development</span>
+<span class="comment">// Including:</span>
+<span class="comment">// - .NET Core serverless templates</span>
+<span class="comment">// - AWS CDK constructs</span>
+<span class="comment">// - Developer productivity tools</span>
+<span class="comment">// - VS Code extensions</span>
 
-<span class="comment">// Smart snippets for serverless development</span>
-<span class="keyword">export</span> <span class="function">function</span> <span class="function-name">activate</span>(<span class="param">context</span>: vscode.ExtensionContext) {
-    <span class="comment">// Auto-generate Lambda boilerplate</span>
-    <span class="keyword">const</span> lambdaSnippet = vscode.commands
-        .<span class="function-name">registerCommand</span>(<span class="string">'buildshift.createLambda'</span>, () => {
-            <span class="comment">// Generate production-ready Lambda function</span>
-        });
-    
-    context.subscriptions.<span class="function-name">push</span>(lambdaSnippet);
-}</code></pre>
+<span class="keyword">const</span> status = {
+    <span class="property">current</span>: <span class="string">'In Development'</span>,
+    <span class="property">eta</span>: <span class="string">'Q2 2025'</span>,
+    <span class="property">focus</span>: [<span class="string">'serverless'</span>, <span class="string">'.NET Core'</span>, <span class="string">'productivity'</span>]
+};</code></pre>
                         </div>
                     </div>
                     
@@ -310,50 +313,50 @@ smart_format.<span class="function-name">apply_standards</span>(<span class="par
                                 <i class="fas fa-code"></i>
                             </div>
                             <div class="project-meta">
-                                <h3>VS Code Productivity Extensions</h3>
+                                <h3>More Projects Coming Soon</h3>
                                 <p class="project-description">
-                                    Custom VS Code extensions pack designed to enhance developer productivity with 
-                                    smart snippets, automated workflows, and environment setup. Includes serverless 
-                                    boilerplate generation, AWS resource management, and development shortcuts.
+                                    Working on additional serverless patterns, .NET Core templates, AWS CDK constructs, 
+                                    and developer productivity tools. Check back for updates on new educational 
+                                    resources and starter templates!
                                 </p>
                             </div>
                         </div>
                         
                         <div class="project-features">
                             <div class="feature-item">
-                                <i class="fas fa-bolt"></i>
-                                <span>Smart Snippets</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-cogs"></i>
-                                <span>Auto Workflows</span>
+                                <i class="fas fa-rocket"></i>
+                                <span>.NET Core Templates</span>
                             </div>
                             <div class="feature-item">
                                 <i class="fas fa-cloud"></i>
-                                <span>AWS Integration</span>
+                                <span>AWS CDK Constructs</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fas fa-keyboard"></i>
-                                <span>Custom Shortcuts</span>
+                                <i class="fas fa-tools"></i>
+                                <span>Dev Productivity</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Educational Content</span>
                             </div>
                         </div>
                         
                         <div class="tech-stack">
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">AWS CDK</span>
+                            <span class="tech-tag">Python</span>
                             <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">VS Code API</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Webpack</span>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://github.com/buildshift.dev/vscode-productivity" target="_blank" class="btn btn--outline">
+                            <a href="https://github.com/buildshift-dev" target="_blank" class="btn btn--outline">
                                 <i class="fab fa-github"></i>
-                                View Code
+                                Follow Updates
                             </a>
-                            <a href="https://marketplace.visualstudio.com/items?itemName=buildshift.productivity-pack" target="_blank" class="btn btn--primary">
-                                <i class="fas fa-external-link-alt"></i>
-                                VS Marketplace
-                            </a>
+                            <div class="btn btn--primary" style="background: #6c757d; cursor: not-allowed;">
+                                <i class="fas fa-clock"></i>
+                                Coming Soon
+                            </div>
                         </div>
                     </div>
                 </div>
