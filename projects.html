@@ -76,7 +76,7 @@
                 </p>
                 <div class="hero-stats" style="margin-top: 2rem;">
                     <div class="stat-item">
-                        <div class="stat-number">2</div>
+                        <div class="stat-number">3</div>
                         <div class="stat-label">Active Projects</div>
                     </div>
                     <div class="stat-item">
@@ -115,6 +115,92 @@
             <h2 class="section-title">Featured Projects</h2>
             
             <div class="projects-showcase">
+                <!-- Clean Architecture Python -->
+                <div class="project-showcase" data-category="python">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift-dev/clean-py</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment"># Clean Architecture Python with FastAPI</span>
+<span class="keyword">from</span> <span class="string">src.domain.entities.customer</span> <span class="keyword">import</span> <span class="string">Customer</span>
+<span class="keyword">from</span> <span class="string">src.application.use_cases</span> <span class="keyword">import</span> <span class="string">CreateCustomerUseCase</span>
+
+<span class="keyword">class</span> <span class="property">CustomerRepository</span>(<span class="property">Protocol</span>):
+    <span class="keyword">def</span> <span class="property">save</span>(<span class="property">self</span>, <span class="property">customer</span>: <span class="property">Customer</span>) -> <span class="property">Customer</span>:
+        ...
+    
+    <span class="keyword">def</span> <span class="property">find_by_id</span>(<span class="property">self</span>, <span class="property">customer_id</span>: <span class="property">UUID</span>) -> <span class="property">Customer</span> | <span class="property">None</span>:
+        ...
+
+<span class="comment"># PostgreSQL + JSONB hybrid approach</span>
+<span class="keyword">@app.post</span>(<span class="string">"/api/v1/customers"</span>)
+<span class="keyword">async def</span> <span class="property">create_customer</span>(<span class="property">request</span>: <span class="property">CreateCustomerRequest</span>):
+    <span class="keyword">return</span> <span class="keyword">await</span> <span class="property">use_case</span>.<span class="property">execute</span>(<span class="property">request</span>)</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>Clean Architecture Python</h3>
+                                <p class="project-description">
+                                    Comprehensive demonstration of Clean Architecture principles and Domain-Driven Design 
+                                    patterns in Python with FastAPI and PostgreSQL. Features strong typing, comprehensive 
+                                    linting, and both Streamlit demo and REST API implementations.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Clean Architecture</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-database"></i>
+                                <span>PostgreSQL Hybrid</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Strong Typing</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-play"></i>
+                                <span>Interactive Demo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">CloudFormation</span>
+                            <span class="tech-tag">Clean Architecture</span>
+                            <span class="tech-tag">Microservices</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift-dev/clean-py" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://github.com/buildshift-dev/clean-py" target="_blank" class="btn btn--primary">
+                                <i class="fas fa-book"></i>
+                                Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Terraform Tutorials -->
                 <div class="project-showcase" data-category="infrastructure">
                     <div class="project-preview">
@@ -189,7 +275,7 @@
                                 <i class="fab fa-github"></i>
                                 View Code
                             </a>
-                            <a href="https://github.com/buildshift-dev/tf-tutorial" class="btn btn--primary">
+                            <a href="https://github.com/buildshift-dev/tf-tutorial" target="_blank" class="btn btn--primary">
                                 <i class="fas fa-book"></i>
                                 Documentation
                             </a>
@@ -272,13 +358,14 @@
                                 <i class="fab fa-github"></i>
                                 View Code
                             </a>
-                            <a href="https://github.com/buildshift-dev/aws-egress-estimate" class="btn btn--primary">
+                            <a href="https://github.com/buildshift-dev/aws-egress-estimate" target="_blank" class="btn btn--primary">
                                 <i class="fas fa-book"></i>
                                 Documentation
                             </a>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- Coming Soon: More Projects -->
                 <div class="project-showcase coming-soon" data-category="devtools" style="opacity: 0.6; border: 2px dashed #dee2e6;">
