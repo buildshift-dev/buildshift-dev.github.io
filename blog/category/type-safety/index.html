@@ -1,0 +1,1251 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Full Stack Developer specializing in AWS Serverless, Python, and modern development workflows">
+      
+      
+        <meta name="author" content="buildshift.dev">
+      
+      
+        <link rel="canonical" href="https://buildshift.dev/blog/category/type-safety/">
+      
+      
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Type Safety - buildshift.dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/buildshift.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-4SV8ZKYLT1"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-4SV8ZKYLT1",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-4SV8ZKYLT1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Fixed banner styling -->
+  <style>
+    body { padding-top: 40px !important; }
+    .md-header { top: 40px !important; }
+    .md-tabs { top: 40px !important; }
+  </style>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#type-safety" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <!-- Under Construction Announcement -->
+  <div style="background: #000000; text-align: center; padding: 8px 0; position: fixed; top: 0; left: 0; right: 0; z-index: 9999; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 14px; font-weight: 500; color: #ffa500;">
+      <i class="fas fa-hard-hat"></i>
+      <span>...Under Construction...</span>
+    </div>
+  </div>
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="buildshift.dev" class="md-header__button md-logo" aria-label="buildshift.dev" data-md-component="logo">
+      
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            buildshift.dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Type Safety
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/buildshift-dev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    buildshift-dev
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  buildshift.dev Blog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="buildshift.dev" class="md-nav__button md-logo" aria-label="buildshift.dev" data-md-component="logo">
+      
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="logo">
+
+    </a>
+    buildshift.dev
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/buildshift-dev" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    buildshift-dev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    buildshift.dev Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="type-safety">Type Safety</h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/buildshift-dev.png" alt="BuildShift Developer">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-06-22 18:50:00-04:00">Jun 22, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../python/" class="md-meta__link">Python</a>, 
+              <a href="./" class="md-meta__link">Type Safety</a>, 
+              <a href="../code-quality/" class="md-meta__link">Code Quality</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              11 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="python-type-hints-your-first-line-of-defense"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/">Python Type Hints: Your First Line of Defense</a></h2>
+<p>Python without type hints is like driving without headlights—you can do it, but you're bound to hit something eventually. I've spent too many hours debugging runtime errors that could have been caught at development time: <code>AttributeError: 'NoneType' object has no attribute 'value'</code>, <code>TypeError: unsupported operand type(s) for +: 'str' and 'int'</code>, and the classic <code>KeyError: 'customer_id'</code> in production.</p>
+<p>Type hints transform Python development from a guessing game into a predictable, maintainable experience. They serve as documentation, catch bugs early, and make your code self-explaining. The <a href="https://github.com/buildshift-dev/clean-py">clean-py repository</a> demonstrates how comprehensive type annotations create robust, professional Python applications.</p>
+<h3 id="the-case-for-type-hints"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#the-case-for-type-hints">The Case for Type Hints</a></h3>
+<p>Dynamic typing is Python's superpower and its kryptonite. The flexibility that makes Python productive also makes it fragile. Consider this seemingly innocent function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1"># No type hints - runtime disasters waiting to happen</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_order_total</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">tax_rate</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>    <span class="n">subtotal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">item</span><span class="o">.</span><span class="n">quantity</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>    <span class="n">discounted</span> <span class="o">=</span> <span class="n">subtotal</span> <span class="o">-</span> <span class="n">discount</span>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>    <span class="n">tax</span> <span class="o">=</span> <span class="n">discounted</span> <span class="o">*</span> <span class="n">tax_rate</span>
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>    <span class="k">return</span> <span class="n">discounted</span> <span class="o">+</span> <span class="n">tax</span>
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a>
+<a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="c1"># What happens when someone calls it like this?</span>
+<a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="n">total</span> <span class="o">=</span> <span class="n">calculate_order_total</span><span class="p">(</span><span class="s2">&quot;not a list&quot;</span><span class="p">,</span> <span class="s2">&quot;not a number&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a><span class="c1"># Runtime explosion guaranteed</span>
+</code></pre></div>
+<p>The problems are invisible until runtime:
+- What type should <code>items</code> be?
+- Is <code>discount</code> a percentage or absolute amount?
+- Can any of these parameters be <code>None</code>?
+- What does the function return?</p>
+<p>With type hints, these questions have clear answers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="c1"># Type hints make expectations explicit</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_order_total</span><span class="p">(</span>
+<a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>    <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OrderItem</span><span class="p">],</span> 
+<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>    <span class="n">tax_rate</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">,</span> 
+<a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>    <span class="n">discount</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+<a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate order total with tax and optional discount.&quot;&quot;&quot;</span>
+<a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a>    <span class="n">subtotal</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">item</span><span class="o">.</span><span class="n">quantity</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)</span>
+<a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a>
+<a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a>    <span class="k">if</span> <span class="n">discount</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a>        <span class="n">subtotal</span> <span class="o">-=</span> <span class="n">discount</span>
+<a id="__codelineno-55-15" name="__codelineno-55-15" href="#__codelineno-55-15"></a>
+<a id="__codelineno-55-16" name="__codelineno-55-16" href="#__codelineno-55-16"></a>    <span class="n">tax</span> <span class="o">=</span> <span class="n">subtotal</span> <span class="o">*</span> <span class="n">tax_rate</span>
+<a id="__codelineno-55-17" name="__codelineno-55-17" href="#__codelineno-55-17"></a>    <span class="k">return</span> <span class="n">subtotal</span> <span class="o">+</span> <span class="n">tax</span>
+<a id="__codelineno-55-18" name="__codelineno-55-18" href="#__codelineno-55-18"></a>
+<a id="__codelineno-55-19" name="__codelineno-55-19" href="#__codelineno-55-19"></a><span class="c1"># Now it&#39;s impossible to misuse</span>
+<a id="__codelineno-55-20" name="__codelineno-55-20" href="#__codelineno-55-20"></a><span class="c1"># calculate_order_total(&quot;invalid&quot;, &quot;invalid&quot;, &quot;invalid&quot;)  # Type checker catches this</span>
+</code></pre></div>
+<h3 id="modern-python-type-system"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#modern-python-type-system">Modern Python Type System</a></h3>
+<p>Python's type system has evolved dramatically since type hints were introduced in Python 3.5. The <a href="https://github.com/buildshift-dev/clean-py">clean-py repository</a> uses modern Python 3.11+ features for maximum expressiveness:</p>
+<h4 id="union-types-with-operator"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#union-types-with-operator">Union Types with | Operator</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># Old style - verbose</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="n">user_id</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;user123&quot;</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="n">customer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Customer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a>
+<a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a><span class="c1"># Modern style - clean and readable</span>
+<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="s2">&quot;user123&quot;</span>
+<a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a><span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<h4 id="generic-collections"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#generic-collections">Generic Collections</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># Built-in collections are generic in Python 3.9+</span>
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>  <span class="c1"># No longer needed</span>
+<a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>
+<a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a><span class="c1"># Modern style</span>
+<a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a><span class="n">customers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Customer</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a><span class="n">customer_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Customer</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a><span class="n">coordinates</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="advanced-value-object-typing"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#advanced-value-object-typing">Advanced Value Object Typing</a></h4>
+<p>The repository demonstrates sophisticated typing for value objects:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="c1"># src/shared_kernel/value_objects/money.py</span>
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>  <span class="c1"># Python 3.11+</span>
+<a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a>
+<a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-58-7" name="__codelineno-58-7" href="#__codelineno-58-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Money</span><span class="p">(</span><span class="n">ValueObject</span><span class="p">):</span>
+<a id="__codelineno-58-8" name="__codelineno-58-8" href="#__codelineno-58-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Money value object with currency and amount.&quot;&quot;&quot;</span>
+<a id="__codelineno-58-9" name="__codelineno-58-9" href="#__codelineno-58-9"></a>
+<a id="__codelineno-58-10" name="__codelineno-58-10" href="#__codelineno-58-10"></a>    <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span>
+<a id="__codelineno-58-11" name="__codelineno-58-11" href="#__codelineno-58-11"></a>    <span class="n">currency</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-58-12" name="__codelineno-58-12" href="#__codelineno-58-12"></a>
+<a id="__codelineno-58-13" name="__codelineno-58-13" href="#__codelineno-58-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Money&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Money&quot;</span><span class="p">:</span>
+<a id="__codelineno-58-14" name="__codelineno-58-14" href="#__codelineno-58-14"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Add two money amounts (must have same currency).&quot;&quot;&quot;</span>
+<a id="__codelineno-58-15" name="__codelineno-58-15" href="#__codelineno-58-15"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">currency</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">currency</span><span class="p">:</span>
+<a id="__codelineno-58-16" name="__codelineno-58-16" href="#__codelineno-58-16"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<a id="__codelineno-58-17" name="__codelineno-58-17" href="#__codelineno-58-17"></a>                <span class="sa">f</span><span class="s2">&quot;Cannot add different currencies: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">currency</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">currency</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-58-18" name="__codelineno-58-18" href="#__codelineno-58-18"></a>            <span class="p">)</span>
+<a id="__codelineno-58-19" name="__codelineno-58-19" href="#__codelineno-58-19"></a>        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span><span class="n">amount</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currency</span><span class="p">)</span>
+<a id="__codelineno-58-20" name="__codelineno-58-20" href="#__codelineno-58-20"></a>
+<a id="__codelineno-58-21" name="__codelineno-58-21" href="#__codelineno-58-21"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Money&quot;</span><span class="p">:</span>
+<a id="__codelineno-58-22" name="__codelineno-58-22" href="#__codelineno-58-22"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Multiply money by a factor.&quot;&quot;&quot;</span>
+<a id="__codelineno-58-23" name="__codelineno-58-23" href="#__codelineno-58-23"></a>        <span class="k">if</span> <span class="n">factor</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-58-24" name="__codelineno-58-24" href="#__codelineno-58-24"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Factor cannot be negative&quot;</span><span class="p">)</span>
+<a id="__codelineno-58-25" name="__codelineno-58-25" href="#__codelineno-58-25"></a>        <span class="k">return</span> <span class="n">Money</span><span class="p">(</span>
+<a id="__codelineno-58-26" name="__codelineno-58-26" href="#__codelineno-58-26"></a>            <span class="n">amount</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span> <span class="o">*</span> <span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">factor</span><span class="p">)),</span> 
+<a id="__codelineno-58-27" name="__codelineno-58-27" href="#__codelineno-58-27"></a>            <span class="n">currency</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">currency</span>
+<a id="__codelineno-58-28" name="__codelineno-58-28" href="#__codelineno-58-28"></a>        <span class="p">)</span>
+</code></pre></div>
+<h4 id="repository-interface-typing"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#repository-interface-typing">Repository Interface Typing</a></h4>
+<p>Complex generics make repository patterns type-safe:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="c1"># src/domain/repositories/customer_repository.py</span>
+<a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">UUID</span>
+<a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a>
+<a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.domain.entities.customer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Customer</span>
+<a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.shared_kernel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomerId</span>
+<a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>
+<a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomerRepository</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract repository for customer persistence.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a>
+<a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-59-13" name="__codelineno-59-13" href="#__codelineno-59-13"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-59-14" name="__codelineno-59-14" href="#__codelineno-59-14"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Save a customer and return the saved instance.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-15" name="__codelineno-59-15" href="#__codelineno-59-15"></a>        <span class="k">pass</span>
+<a id="__codelineno-59-16" name="__codelineno-59-16" href="#__codelineno-59-16"></a>
+<a id="__codelineno-59-17" name="__codelineno-59-17" href="#__codelineno-59-17"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-59-18" name="__codelineno-59-18" href="#__codelineno-59-18"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Customer</span><span class="p">]:</span>
+<a id="__codelineno-59-19" name="__codelineno-59-19" href="#__codelineno-59-19"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find a customer by their ID.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-20" name="__codelineno-59-20" href="#__codelineno-59-20"></a>        <span class="k">pass</span>
+<a id="__codelineno-59-21" name="__codelineno-59-21" href="#__codelineno-59-21"></a>
+<a id="__codelineno-59-22" name="__codelineno-59-22" href="#__codelineno-59-22"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-59-23" name="__codelineno-59-23" href="#__codelineno-59-23"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Customer</span><span class="p">]:</span>
+<a id="__codelineno-59-24" name="__codelineno-59-24" href="#__codelineno-59-24"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find a customer by their email address.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-25" name="__codelineno-59-25" href="#__codelineno-59-25"></a>        <span class="k">pass</span>
+<a id="__codelineno-59-26" name="__codelineno-59-26" href="#__codelineno-59-26"></a>
+<a id="__codelineno-59-27" name="__codelineno-59-27" href="#__codelineno-59-27"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-59-28" name="__codelineno-59-28" href="#__codelineno-59-28"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_all_active</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Customer</span><span class="p">]:</span>
+<a id="__codelineno-59-29" name="__codelineno-59-29" href="#__codelineno-59-29"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find all active customers.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-30" name="__codelineno-59-30" href="#__codelineno-59-30"></a>        <span class="k">pass</span>
+<a id="__codelineno-59-31" name="__codelineno-59-31" href="#__codelineno-59-31"></a>
+<a id="__codelineno-59-32" name="__codelineno-59-32" href="#__codelineno-59-32"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-59-33" name="__codelineno-59-33" href="#__codelineno-59-33"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-59-34" name="__codelineno-59-34" href="#__codelineno-59-34"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a customer by ID.&quot;&quot;&quot;</span>
+<a id="__codelineno-59-35" name="__codelineno-59-35" href="#__codelineno-59-35"></a>        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="use-case-typing"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#use-case-typing">Use Case Typing</a></h4>
+<p>Application layer typing ensures proper dependency injection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># src/application/use_cases/commands/create_customer.py</span>
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">uuid4</span>
+<a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a>
+<a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.domain.entities.customer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Customer</span>
+<a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.domain.repositories.customer_repository</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomerRepository</span>
+<a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.shared_kernel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomerId</span><span class="p">,</span> <span class="n">Email</span>
+<a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a>
+<a id="__codelineno-60-10" name="__codelineno-60-10" href="#__codelineno-60-10"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-60-11" name="__codelineno-60-11" href="#__codelineno-60-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">CreateCustomerCommand</span><span class="p">:</span>
+<a id="__codelineno-60-12" name="__codelineno-60-12" href="#__codelineno-60-12"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-60-13" name="__codelineno-60-13" href="#__codelineno-60-13"></a>    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-60-14" name="__codelineno-60-14" href="#__codelineno-60-14"></a>    <span class="n">preferences</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-60-15" name="__codelineno-60-15" href="#__codelineno-60-15"></a>
+<a id="__codelineno-60-16" name="__codelineno-60-16" href="#__codelineno-60-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">CreateCustomerUseCase</span><span class="p">:</span>
+<a id="__codelineno-60-17" name="__codelineno-60-17" href="#__codelineno-60-17"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_repository</span><span class="p">:</span> <span class="n">CustomerRepository</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-60-18" name="__codelineno-60-18" href="#__codelineno-60-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_customer_repo</span> <span class="o">=</span> <span class="n">customer_repository</span>
+<a id="__codelineno-60-19" name="__codelineno-60-19" href="#__codelineno-60-19"></a>
+<a id="__codelineno-60-20" name="__codelineno-60-20" href="#__codelineno-60-20"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">CreateCustomerCommand</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-60-21" name="__codelineno-60-21" href="#__codelineno-60-21"></a>        <span class="c1"># Check if customer with email already exists</span>
+<a id="__codelineno-60-22" name="__codelineno-60-22" href="#__codelineno-60-22"></a>        <span class="n">existing</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_customer_repo</span><span class="o">.</span><span class="n">find_by_email</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+<a id="__codelineno-60-23" name="__codelineno-60-23" href="#__codelineno-60-23"></a>        <span class="k">if</span> <span class="n">existing</span><span class="p">:</span>
+<a id="__codelineno-60-24" name="__codelineno-60-24" href="#__codelineno-60-24"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Customer with email </span><span class="si">{</span><span class="n">command</span><span class="o">.</span><span class="n">email</span><span class="si">}</span><span class="s2"> already exists&quot;</span><span class="p">)</span>
+<a id="__codelineno-60-25" name="__codelineno-60-25" href="#__codelineno-60-25"></a>
+<a id="__codelineno-60-26" name="__codelineno-60-26" href="#__codelineno-60-26"></a>        <span class="c1"># Create new customer using factory method</span>
+<a id="__codelineno-60-27" name="__codelineno-60-27" href="#__codelineno-60-27"></a>        <span class="n">customer_id</span> <span class="o">=</span> <span class="n">CustomerId</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>
+<a id="__codelineno-60-28" name="__codelineno-60-28" href="#__codelineno-60-28"></a>        <span class="n">email</span> <span class="o">=</span> <span class="n">Email</span><span class="p">(</span><span class="n">command</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+<a id="__codelineno-60-29" name="__codelineno-60-29" href="#__codelineno-60-29"></a>
+<a id="__codelineno-60-30" name="__codelineno-60-30" href="#__codelineno-60-30"></a>        <span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-60-31" name="__codelineno-60-31" href="#__codelineno-60-31"></a>            <span class="n">customer_id</span><span class="o">=</span><span class="n">customer_id</span><span class="p">,</span>
+<a id="__codelineno-60-32" name="__codelineno-60-32" href="#__codelineno-60-32"></a>            <span class="n">name</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-60-33" name="__codelineno-60-33" href="#__codelineno-60-33"></a>            <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+<a id="__codelineno-60-34" name="__codelineno-60-34" href="#__codelineno-60-34"></a>            <span class="n">preferences</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">preferences</span> <span class="ow">or</span> <span class="p">{},</span>
+<a id="__codelineno-60-35" name="__codelineno-60-35" href="#__codelineno-60-35"></a>        <span class="p">)</span>
+<a id="__codelineno-60-36" name="__codelineno-60-36" href="#__codelineno-60-36"></a>
+<a id="__codelineno-60-37" name="__codelineno-60-37" href="#__codelineno-60-37"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_customer_repo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="type-checking-with-pyright"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#type-checking-with-pyright">Type Checking with Pyright</a></h3>
+<p>The repository uses Pyright for strict type checking. The configuration shows professional-grade type safety:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="p">{</span>
+<a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="w">  </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tests&quot;</span><span class="p">],</span>
+<a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a><span class="w">  </span><span class="nt">&quot;reportMissingImports&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a><span class="w">  </span><span class="nt">&quot;reportGeneralTypeIssues&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a><span class="w">  </span><span class="nt">&quot;reportOptionalMemberAccess&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a><span class="w">  </span><span class="nt">&quot;reportOptionalCall&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a><span class="w">  </span><span class="nt">&quot;reportPrivateUsage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a><span class="w">  </span><span class="nt">&quot;reportUnusedImport&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-9" name="__codelineno-61-9" href="#__codelineno-61-9"></a><span class="w">  </span><span class="nt">&quot;reportUnusedClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-10" name="__codelineno-61-10" href="#__codelineno-61-10"></a><span class="w">  </span><span class="nt">&quot;reportUnusedFunction&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-11" name="__codelineno-61-11" href="#__codelineno-61-11"></a><span class="w">  </span><span class="nt">&quot;reportUnusedVariable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-12" name="__codelineno-61-12" href="#__codelineno-61-12"></a><span class="w">  </span><span class="nt">&quot;reportUntypedFunctionDecorator&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-13" name="__codelineno-61-13" href="#__codelineno-61-13"></a><span class="w">  </span><span class="nt">&quot;reportMissingParameterType&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-14" name="__codelineno-61-14" href="#__codelineno-61-14"></a><span class="w">  </span><span class="nt">&quot;reportMissingReturnType&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-15" name="__codelineno-61-15" href="#__codelineno-61-15"></a><span class="w">  </span><span class="nt">&quot;reportUntypedBaseClass&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-61-16" name="__codelineno-61-16" href="#__codelineno-61-16"></a><span class="w">  </span><span class="nt">&quot;pythonVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.11&quot;</span><span class="p">,</span>
+<a id="__codelineno-61-17" name="__codelineno-61-17" href="#__codelineno-61-17"></a><span class="w">  </span><span class="nt">&quot;typeCheckingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic&quot;</span>
+<a id="__codelineno-61-18" name="__codelineno-61-18" href="#__codelineno-61-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>This configuration catches common issues:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># Pyright catches these errors at development time:</span>
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>
+<a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="c1"># Missing return type annotation</span>
+<a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_order</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>  <span class="c1"># ❌ reportMissingReturnType</span>
+<a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a>    <span class="k">return</span> <span class="n">order</span><span class="o">.</span><span class="n">total</span>
+<a id="__codelineno-62-6" name="__codelineno-62-6" href="#__codelineno-62-6"></a>
+<a id="__codelineno-62-7" name="__codelineno-62-7" href="#__codelineno-62-7"></a><span class="c1"># Unused imports</span>
+<a id="__codelineno-62-8" name="__codelineno-62-8" href="#__codelineno-62-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>  <span class="c1"># ❌ reportUnusedImport</span>
+<a id="__codelineno-62-9" name="__codelineno-62-9" href="#__codelineno-62-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
+<a id="__codelineno-62-10" name="__codelineno-62-10" href="#__codelineno-62-10"></a>
+<a id="__codelineno-62-11" name="__codelineno-62-11" href="#__codelineno-62-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_tax</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+<a id="__codelineno-62-12" name="__codelineno-62-12" href="#__codelineno-62-12"></a>    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;0.08&quot;</span><span class="p">)</span>
+<a id="__codelineno-62-13" name="__codelineno-62-13" href="#__codelineno-62-13"></a>
+<a id="__codelineno-62-14" name="__codelineno-62-14" href="#__codelineno-62-14"></a><span class="c1"># Optional member access without checking</span>
+<a id="__codelineno-62-15" name="__codelineno-62-15" href="#__codelineno-62-15"></a><span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">get_customer</span><span class="p">()</span>
+<a id="__codelineno-62-16" name="__codelineno-62-16" href="#__codelineno-62-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># ❌ reportOptionalMemberAccess</span>
+<a id="__codelineno-62-17" name="__codelineno-62-17" href="#__codelineno-62-17"></a>
+<a id="__codelineno-62-18" name="__codelineno-62-18" href="#__codelineno-62-18"></a><span class="c1"># Correct approach</span>
+<a id="__codelineno-62-19" name="__codelineno-62-19" href="#__codelineno-62-19"></a><span class="k">if</span> <span class="n">customer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-62-20" name="__codelineno-62-20" href="#__codelineno-62-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># ✅ Safe after None check</span>
+</code></pre></div>
+<h3 id="advanced-type-patterns"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#advanced-type-patterns">Advanced Type Patterns</a></h3>
+<h4 id="protocol-classes-for-duck-typing"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#protocol-classes-for-duck-typing">Protocol Classes for Duck Typing</a></h4>
+<p>Sometimes you need the flexibility of duck typing with the safety of type hints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">runtime_checkable</span>
+<a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>
+<a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="nd">@runtime_checkable</span>
+<a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">PaymentProcessor</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Protocol for payment processing.&quot;&quot;&quot;</span>
+<a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a>
+<a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">charge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">,</span> <span class="n">payment_method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PaymentResult</span><span class="p">:</span>
+<a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Process a payment charge.&quot;&quot;&quot;</span>
+<a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>        <span class="o">...</span>
+<a id="__codelineno-63-10" name="__codelineno-63-10" href="#__codelineno-63-10"></a>
+<a id="__codelineno-63-11" name="__codelineno-63-11" href="#__codelineno-63-11"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">refund</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transaction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RefundResult</span><span class="p">:</span>
+<a id="__codelineno-63-12" name="__codelineno-63-12" href="#__codelineno-63-12"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Process a refund.&quot;&quot;&quot;</span>
+<a id="__codelineno-63-13" name="__codelineno-63-13" href="#__codelineno-63-13"></a>        <span class="o">...</span>
+<a id="__codelineno-63-14" name="__codelineno-63-14" href="#__codelineno-63-14"></a>
+<a id="__codelineno-63-15" name="__codelineno-63-15" href="#__codelineno-63-15"></a><span class="k">class</span><span class="w"> </span><span class="nc">StripeProcessor</span><span class="p">:</span>
+<a id="__codelineno-63-16" name="__codelineno-63-16" href="#__codelineno-63-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Stripe implementation of payment processing.&quot;&quot;&quot;</span>
+<a id="__codelineno-63-17" name="__codelineno-63-17" href="#__codelineno-63-17"></a>
+<a id="__codelineno-63-18" name="__codelineno-63-18" href="#__codelineno-63-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">charge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">,</span> <span class="n">payment_method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PaymentResult</span><span class="p">:</span>
+<a id="__codelineno-63-19" name="__codelineno-63-19" href="#__codelineno-63-19"></a>        <span class="c1"># Stripe-specific implementation</span>
+<a id="__codelineno-63-20" name="__codelineno-63-20" href="#__codelineno-63-20"></a>        <span class="k">return</span> <span class="n">PaymentResult</span><span class="p">(</span><span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transaction_id</span><span class="o">=</span><span class="s2">&quot;stripe_123&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-21" name="__codelineno-63-21" href="#__codelineno-63-21"></a>
+<a id="__codelineno-63-22" name="__codelineno-63-22" href="#__codelineno-63-22"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">refund</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transaction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RefundResult</span><span class="p">:</span>
+<a id="__codelineno-63-23" name="__codelineno-63-23" href="#__codelineno-63-23"></a>        <span class="c1"># Stripe-specific refund</span>
+<a id="__codelineno-63-24" name="__codelineno-63-24" href="#__codelineno-63-24"></a>        <span class="k">return</span> <span class="n">RefundResult</span><span class="p">(</span><span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">refund_id</span><span class="o">=</span><span class="s2">&quot;refund_456&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-25" name="__codelineno-63-25" href="#__codelineno-63-25"></a>
+<a id="__codelineno-63-26" name="__codelineno-63-26" href="#__codelineno-63-26"></a><span class="k">class</span><span class="w"> </span><span class="nc">PayPalProcessor</span><span class="p">:</span>
+<a id="__codelineno-63-27" name="__codelineno-63-27" href="#__codelineno-63-27"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;PayPal implementation of payment processing.&quot;&quot;&quot;</span>
+<a id="__codelineno-63-28" name="__codelineno-63-28" href="#__codelineno-63-28"></a>
+<a id="__codelineno-63-29" name="__codelineno-63-29" href="#__codelineno-63-29"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">charge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">,</span> <span class="n">payment_method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PaymentResult</span><span class="p">:</span>
+<a id="__codelineno-63-30" name="__codelineno-63-30" href="#__codelineno-63-30"></a>        <span class="c1"># PayPal-specific implementation</span>
+<a id="__codelineno-63-31" name="__codelineno-63-31" href="#__codelineno-63-31"></a>        <span class="k">return</span> <span class="n">PaymentResult</span><span class="p">(</span><span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transaction_id</span><span class="o">=</span><span class="s2">&quot;pp_789&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-32" name="__codelineno-63-32" href="#__codelineno-63-32"></a>
+<a id="__codelineno-63-33" name="__codelineno-63-33" href="#__codelineno-63-33"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">refund</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transaction_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RefundResult</span><span class="p">:</span>
+<a id="__codelineno-63-34" name="__codelineno-63-34" href="#__codelineno-63-34"></a>        <span class="c1"># PayPal-specific refund</span>
+<a id="__codelineno-63-35" name="__codelineno-63-35" href="#__codelineno-63-35"></a>        <span class="k">return</span> <span class="n">RefundResult</span><span class="p">(</span><span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">refund_id</span><span class="o">=</span><span class="s2">&quot;pp_refund_101&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-36" name="__codelineno-63-36" href="#__codelineno-63-36"></a>
+<a id="__codelineno-63-37" name="__codelineno-63-37" href="#__codelineno-63-37"></a><span class="c1"># Both implementations satisfy the protocol</span>
+<a id="__codelineno-63-38" name="__codelineno-63-38" href="#__codelineno-63-38"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span>
+<a id="__codelineno-63-39" name="__codelineno-63-39" href="#__codelineno-63-39"></a>    <span class="n">processor</span><span class="p">:</span> <span class="n">PaymentProcessor</span><span class="p">,</span>  <span class="c1"># Any object with charge() and refund() methods</span>
+<a id="__codelineno-63-40" name="__codelineno-63-40" href="#__codelineno-63-40"></a>    <span class="n">amount</span><span class="p">:</span> <span class="n">Money</span><span class="p">,</span>
+<a id="__codelineno-63-41" name="__codelineno-63-41" href="#__codelineno-63-41"></a>    <span class="n">payment_method</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-63-42" name="__codelineno-63-42" href="#__codelineno-63-42"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PaymentResult</span><span class="p">:</span>
+<a id="__codelineno-63-43" name="__codelineno-63-43" href="#__codelineno-63-43"></a>    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">charge</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">payment_method</span><span class="p">)</span>
+<a id="__codelineno-63-44" name="__codelineno-63-44" href="#__codelineno-63-44"></a>
+<a id="__codelineno-63-45" name="__codelineno-63-45" href="#__codelineno-63-45"></a><span class="c1"># Works with either implementation</span>
+<a id="__codelineno-63-46" name="__codelineno-63-46" href="#__codelineno-63-46"></a><span class="n">stripe</span> <span class="o">=</span> <span class="n">StripeProcessor</span><span class="p">()</span>
+<a id="__codelineno-63-47" name="__codelineno-63-47" href="#__codelineno-63-47"></a><span class="n">paypal</span> <span class="o">=</span> <span class="n">PayPalProcessor</span><span class="p">()</span>
+<a id="__codelineno-63-48" name="__codelineno-63-48" href="#__codelineno-63-48"></a>
+<a id="__codelineno-63-49" name="__codelineno-63-49" href="#__codelineno-63-49"></a><span class="n">result1</span> <span class="o">=</span> <span class="n">process_payment</span><span class="p">(</span><span class="n">stripe</span><span class="p">,</span> <span class="n">Money</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;100&quot;</span><span class="p">),</span> <span class="s2">&quot;USD&quot;</span><span class="p">),</span> <span class="s2">&quot;card_123&quot;</span><span class="p">)</span>
+<a id="__codelineno-63-50" name="__codelineno-63-50" href="#__codelineno-63-50"></a><span class="n">result2</span> <span class="o">=</span> <span class="n">process_payment</span><span class="p">(</span><span class="n">paypal</span><span class="p">,</span> <span class="n">Money</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s2">&quot;50&quot;</span><span class="p">),</span> <span class="s2">&quot;USD&quot;</span><span class="p">),</span> <span class="s2">&quot;paypal_account&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="generic-classes-for-repositories"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#generic-classes-for-repositories">Generic Classes for Repositories</a></h4>
+<p>Create type-safe, reusable repository patterns:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a>
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>  <span class="c1"># Type variable for the entity type</span>
+<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a><span class="n">ID</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">)</span>  <span class="c1"># Type variable for the ID type</span>
+<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a>
+<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Repository</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">ID</span><span class="p">]):</span>
+<a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic repository interface.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a>
+<a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+<a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Save an entity.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-13" name="__codelineno-64-13" href="#__codelineno-64-13"></a>        <span class="k">pass</span>
+<a id="__codelineno-64-14" name="__codelineno-64-14" href="#__codelineno-64-14"></a>
+<a id="__codelineno-64-15" name="__codelineno-64-15" href="#__codelineno-64-15"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-16" name="__codelineno-64-16" href="#__codelineno-64-16"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_id</span><span class="p">:</span> <span class="n">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<a id="__codelineno-64-17" name="__codelineno-64-17" href="#__codelineno-64-17"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find entity by ID.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-18" name="__codelineno-64-18" href="#__codelineno-64-18"></a>        <span class="k">pass</span>
+<a id="__codelineno-64-19" name="__codelineno-64-19" href="#__codelineno-64-19"></a>
+<a id="__codelineno-64-20" name="__codelineno-64-20" href="#__codelineno-64-20"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-21" name="__codelineno-64-21" href="#__codelineno-64-21"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<a id="__codelineno-64-22" name="__codelineno-64-22" href="#__codelineno-64-22"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find all entities.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-23" name="__codelineno-64-23" href="#__codelineno-64-23"></a>        <span class="k">pass</span>
+<a id="__codelineno-64-24" name="__codelineno-64-24" href="#__codelineno-64-24"></a>
+<a id="__codelineno-64-25" name="__codelineno-64-25" href="#__codelineno-64-25"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-26" name="__codelineno-64-26" href="#__codelineno-64-26"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entity_id</span><span class="p">:</span> <span class="n">ID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-64-27" name="__codelineno-64-27" href="#__codelineno-64-27"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete an entity.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-28" name="__codelineno-64-28" href="#__codelineno-64-28"></a>        <span class="k">pass</span>
+<a id="__codelineno-64-29" name="__codelineno-64-29" href="#__codelineno-64-29"></a>
+<a id="__codelineno-64-30" name="__codelineno-64-30" href="#__codelineno-64-30"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomerRepository</span><span class="p">(</span><span class="n">Repository</span><span class="p">[</span><span class="n">Customer</span><span class="p">,</span> <span class="n">CustomerId</span><span class="p">]):</span>
+<a id="__codelineno-64-31" name="__codelineno-64-31" href="#__codelineno-64-31"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Customer-specific repository with additional methods.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-32" name="__codelineno-64-32" href="#__codelineno-64-32"></a>
+<a id="__codelineno-64-33" name="__codelineno-64-33" href="#__codelineno-64-33"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-34" name="__codelineno-64-34" href="#__codelineno-64-34"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Customer</span><span class="p">]:</span>
+<a id="__codelineno-64-35" name="__codelineno-64-35" href="#__codelineno-64-35"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find customer by email address.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-36" name="__codelineno-64-36" href="#__codelineno-64-36"></a>        <span class="k">pass</span>
+<a id="__codelineno-64-37" name="__codelineno-64-37" href="#__codelineno-64-37"></a>
+<a id="__codelineno-64-38" name="__codelineno-64-38" href="#__codelineno-64-38"></a><span class="k">class</span><span class="w"> </span><span class="nc">OrderRepository</span><span class="p">(</span><span class="n">Repository</span><span class="p">[</span><span class="n">Order</span><span class="p">,</span> <span class="n">OrderId</span><span class="p">]):</span>
+<a id="__codelineno-64-39" name="__codelineno-64-39" href="#__codelineno-64-39"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Order-specific repository with additional methods.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-40" name="__codelineno-64-40" href="#__codelineno-64-40"></a>
+<a id="__codelineno-64-41" name="__codelineno-64-41" href="#__codelineno-64-41"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-64-42" name="__codelineno-64-42" href="#__codelineno-64-42"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_customer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Order</span><span class="p">]:</span>
+<a id="__codelineno-64-43" name="__codelineno-64-43" href="#__codelineno-64-43"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Find orders by customer ID.&quot;&quot;&quot;</span>
+<a id="__codelineno-64-44" name="__codelineno-64-44" href="#__codelineno-64-44"></a>        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="callable-types-for-higher-order-functions"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#callable-types-for-higher-order-functions">Callable Types for Higher-Order Functions</a></h4>
+<p>Type complex function parameters and callbacks:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Awaitable</span>
+<a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>
+<a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a><span class="c1"># Type aliases for complex callables</span>
+<a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a><span class="n">ValidationRule</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Customer</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span>
+<a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a><span class="n">AsyncValidationRule</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Customer</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]</span>
+<a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a><span class="n">EventHandler</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">DomainEvent</span><span class="p">],</span> <span class="n">Awaitable</span><span class="p">[</span><span class="kc">None</span><span class="p">]]</span>
+<a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a>
+<a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomerValidator</span><span class="p">:</span>
+<a id="__codelineno-65-9" name="__codelineno-65-9" href="#__codelineno-65-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Customer validation with typed rules.&quot;&quot;&quot;</span>
+<a id="__codelineno-65-10" name="__codelineno-65-10" href="#__codelineno-65-10"></a>
+<a id="__codelineno-65-11" name="__codelineno-65-11" href="#__codelineno-65-11"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ValidationRule</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-65-12" name="__codelineno-65-12" href="#__codelineno-65-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_rules</span> <span class="o">=</span> <span class="n">rules</span>
+<a id="__codelineno-65-13" name="__codelineno-65-13" href="#__codelineno-65-13"></a>
+<a id="__codelineno-65-14" name="__codelineno-65-14" href="#__codelineno-65-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-65-15" name="__codelineno-65-15" href="#__codelineno-65-15"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate customer against all rules.&quot;&quot;&quot;</span>
+<a id="__codelineno-65-16" name="__codelineno-65-16" href="#__codelineno-65-16"></a>        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">rule</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span> <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rules</span><span class="p">)</span>
+<a id="__codelineno-65-17" name="__codelineno-65-17" href="#__codelineno-65-17"></a>
+<a id="__codelineno-65-18" name="__codelineno-65-18" href="#__codelineno-65-18"></a><span class="k">class</span><span class="w"> </span><span class="nc">AsyncCustomerValidator</span><span class="p">:</span>
+<a id="__codelineno-65-19" name="__codelineno-65-19" href="#__codelineno-65-19"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Async customer validation with typed rules.&quot;&quot;&quot;</span>
+<a id="__codelineno-65-20" name="__codelineno-65-20" href="#__codelineno-65-20"></a>
+<a id="__codelineno-65-21" name="__codelineno-65-21" href="#__codelineno-65-21"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AsyncValidationRule</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-65-22" name="__codelineno-65-22" href="#__codelineno-65-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_rules</span> <span class="o">=</span> <span class="n">rules</span>
+<a id="__codelineno-65-23" name="__codelineno-65-23" href="#__codelineno-65-23"></a>
+<a id="__codelineno-65-24" name="__codelineno-65-24" href="#__codelineno-65-24"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-65-25" name="__codelineno-65-25" href="#__codelineno-65-25"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate customer against all async rules.&quot;&quot;&quot;</span>
+<a id="__codelineno-65-26" name="__codelineno-65-26" href="#__codelineno-65-26"></a>        <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">rule</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span> <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rules</span><span class="p">])</span>
+<a id="__codelineno-65-27" name="__codelineno-65-27" href="#__codelineno-65-27"></a>        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<a id="__codelineno-65-28" name="__codelineno-65-28" href="#__codelineno-65-28"></a>
+<a id="__codelineno-65-29" name="__codelineno-65-29" href="#__codelineno-65-29"></a><span class="c1"># Usage with lambda functions and proper typing</span>
+<a id="__codelineno-65-30" name="__codelineno-65-30" href="#__codelineno-65-30"></a><span class="n">validator</span> <span class="o">=</span> <span class="n">CustomerValidator</span><span class="p">([</span>
+<a id="__codelineno-65-31" name="__codelineno-65-31" href="#__codelineno-65-31"></a>    <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Type inferred as ValidationRule</span>
+<a id="__codelineno-65-32" name="__codelineno-65-32" href="#__codelineno-65-32"></a>    <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">email</span><span class="o">.</span><span class="n">domain</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">BLOCKED_DOMAINS</span><span class="p">,</span>
+<a id="__codelineno-65-33" name="__codelineno-65-33" href="#__codelineno-65-33"></a>    <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">is_active</span><span class="p">,</span>
+<a id="__codelineno-65-34" name="__codelineno-65-34" href="#__codelineno-65-34"></a><span class="p">])</span>
+<a id="__codelineno-65-35" name="__codelineno-65-35" href="#__codelineno-65-35"></a>
+<a id="__codelineno-65-36" name="__codelineno-65-36" href="#__codelineno-65-36"></a><span class="n">async_validator</span> <span class="o">=</span> <span class="n">AsyncCustomerValidator</span><span class="p">([</span>
+<a id="__codelineno-65-37" name="__codelineno-65-37" href="#__codelineno-65-37"></a>    <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">check_email_deliverability</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">email</span><span class="p">),</span>  <span class="c1"># Returns Awaitable[bool]</span>
+<a id="__codelineno-65-38" name="__codelineno-65-38" href="#__codelineno-65-38"></a>    <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">verify_identity_async</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">customer_id</span><span class="p">),</span>
+<a id="__codelineno-65-39" name="__codelineno-65-39" href="#__codelineno-65-39"></a><span class="p">])</span>
+</code></pre></div>
+<h4 id="literal-types-for-constants"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#literal-types-for-constants">Literal Types for Constants</a></h4>
+<p>Ensure only valid values are used:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a><span class="n">OrderStatusType</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span> <span class="s2">&quot;CONFIRMED&quot;</span><span class="p">,</span> <span class="s2">&quot;SHIPPED&quot;</span><span class="p">,</span> <span class="s2">&quot;DELIVERED&quot;</span><span class="p">,</span> <span class="s2">&quot;CANCELLED&quot;</span><span class="p">]</span>
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a><span class="n">CustomerType</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;INDIVIDUAL&quot;</span><span class="p">,</span> <span class="s2">&quot;BUSINESS&quot;</span><span class="p">,</span> <span class="s2">&quot;PREMIUM&quot;</span><span class="p">]</span>
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a><span class="n">PaymentMethod</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;CREDIT_CARD&quot;</span><span class="p">,</span> <span class="s2">&quot;DEBIT_CARD&quot;</span><span class="p">,</span> <span class="s2">&quot;PAYPAL&quot;</span><span class="p">,</span> <span class="s2">&quot;BANK_TRANSFER&quot;</span><span class="p">]</span>
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="p">:</span>
+<a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a>        <span class="bp">self</span><span class="p">,</span> 
+<a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a>        <span class="n">order_id</span><span class="p">:</span> <span class="n">OrderId</span><span class="p">,</span> 
+<a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a>        <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span><span class="p">,</span>
+<a id="__codelineno-66-12" name="__codelineno-66-12" href="#__codelineno-66-12"></a>        <span class="n">status</span><span class="p">:</span> <span class="n">OrderStatusType</span> <span class="o">=</span> <span class="s2">&quot;PENDING&quot;</span>  <span class="c1"># Only valid statuses allowed</span>
+<a id="__codelineno-66-13" name="__codelineno-66-13" href="#__codelineno-66-13"></a>    <span class="p">):</span>
+<a id="__codelineno-66-14" name="__codelineno-66-14" href="#__codelineno-66-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">order_id</span>
+<a id="__codelineno-66-15" name="__codelineno-66-15" href="#__codelineno-66-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">customer_id</span> <span class="o">=</span> <span class="n">customer_id</span>
+<a id="__codelineno-66-16" name="__codelineno-66-16" href="#__codelineno-66-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span>
+<a id="__codelineno-66-17" name="__codelineno-66-17" href="#__codelineno-66-17"></a>
+<a id="__codelineno-66-18" name="__codelineno-66-18" href="#__codelineno-66-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_status</span><span class="p">:</span> <span class="n">OrderStatusType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-66-19" name="__codelineno-66-19" href="#__codelineno-66-19"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Update order status with type safety.&quot;&quot;&quot;</span>
+<a id="__codelineno-66-20" name="__codelineno-66-20" href="#__codelineno-66-20"></a>        <span class="c1"># Type checker ensures only valid statuses can be passed</span>
+<a id="__codelineno-66-21" name="__codelineno-66-21" href="#__codelineno-66-21"></a>        <span class="n">valid_transitions</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-66-22" name="__codelineno-66-22" href="#__codelineno-66-22"></a>            <span class="s2">&quot;PENDING&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CONFIRMED&quot;</span><span class="p">,</span> <span class="s2">&quot;CANCELLED&quot;</span><span class="p">],</span>
+<a id="__codelineno-66-23" name="__codelineno-66-23" href="#__codelineno-66-23"></a>            <span class="s2">&quot;CONFIRMED&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;SHIPPED&quot;</span><span class="p">,</span> <span class="s2">&quot;CANCELLED&quot;</span><span class="p">],</span>
+<a id="__codelineno-66-24" name="__codelineno-66-24" href="#__codelineno-66-24"></a>            <span class="s2">&quot;SHIPPED&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;DELIVERED&quot;</span><span class="p">],</span>
+<a id="__codelineno-66-25" name="__codelineno-66-25" href="#__codelineno-66-25"></a>            <span class="s2">&quot;DELIVERED&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<a id="__codelineno-66-26" name="__codelineno-66-26" href="#__codelineno-66-26"></a>            <span class="s2">&quot;CANCELLED&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<a id="__codelineno-66-27" name="__codelineno-66-27" href="#__codelineno-66-27"></a>        <span class="p">}</span>
+<a id="__codelineno-66-28" name="__codelineno-66-28" href="#__codelineno-66-28"></a>
+<a id="__codelineno-66-29" name="__codelineno-66-29" href="#__codelineno-66-29"></a>        <span class="k">if</span> <span class="n">new_status</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_transitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">]:</span>
+<a id="__codelineno-66-30" name="__codelineno-66-30" href="#__codelineno-66-30"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid status transition from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">new_status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-66-31" name="__codelineno-66-31" href="#__codelineno-66-31"></a>
+<a id="__codelineno-66-32" name="__codelineno-66-32" href="#__codelineno-66-32"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">new_status</span>
+<a id="__codelineno-66-33" name="__codelineno-66-33" href="#__codelineno-66-33"></a>
+<a id="__codelineno-66-34" name="__codelineno-66-34" href="#__codelineno-66-34"></a><span class="c1"># Usage - type checker prevents invalid values</span>
+<a id="__codelineno-66-35" name="__codelineno-66-35" href="#__codelineno-66-35"></a><span class="n">order</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span><span class="n">OrderId</span><span class="p">(</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">CustomerId</span><span class="p">(</span><span class="n">uuid4</span><span class="p">()))</span>
+<a id="__codelineno-66-36" name="__codelineno-66-36" href="#__codelineno-66-36"></a><span class="n">order</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span><span class="s2">&quot;CONFIRMED&quot;</span><span class="p">)</span>  <span class="c1"># ✅ Valid</span>
+<a id="__codelineno-66-37" name="__codelineno-66-37" href="#__codelineno-66-37"></a><span class="c1"># order.update_status(&quot;INVALID&quot;)    # ❌ Type error</span>
+</code></pre></div>
+<h4 id="typeddict-for-structured-dictionaries"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#typeddict-for-structured-dictionaries">TypedDict for Structured Dictionaries</a></h4>
+<p>When you must use dictionaries, make them type-safe:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">NotRequired</span>
+<a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>
+<a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomerPreferences</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+<a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Typed dictionary for customer preferences.&quot;&quot;&quot;</span>
+<a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>    <span class="n">theme</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a>    <span class="n">newsletter</span><span class="p">:</span> <span class="nb">bool</span>
+<a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a>    <span class="n">marketing_emails</span><span class="p">:</span> <span class="nb">bool</span>
+<a id="__codelineno-67-8" name="__codelineno-67-8" href="#__codelineno-67-8"></a>    <span class="n">language</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-67-9" name="__codelineno-67-9" href="#__codelineno-67-9"></a>    <span class="n">timezone</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-67-10" name="__codelineno-67-10" href="#__codelineno-67-10"></a>    <span class="n">currency</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-67-11" name="__codelineno-67-11" href="#__codelineno-67-11"></a>    <span class="n">notifications</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]]</span>  <span class="c1"># Optional field</span>
+<a id="__codelineno-67-12" name="__codelineno-67-12" href="#__codelineno-67-12"></a>
+<a id="__codelineno-67-13" name="__codelineno-67-13" href="#__codelineno-67-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">OrderDetails</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+<a id="__codelineno-67-14" name="__codelineno-67-14" href="#__codelineno-67-14"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Typed dictionary for order details.&quot;&quot;&quot;</span>
+<a id="__codelineno-67-15" name="__codelineno-67-15" href="#__codelineno-67-15"></a>    <span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+<a id="__codelineno-67-16" name="__codelineno-67-16" href="#__codelineno-67-16"></a>    <span class="n">shipping_address</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-67-17" name="__codelineno-67-17" href="#__codelineno-67-17"></a>    <span class="n">billing_address</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
+<a id="__codelineno-67-18" name="__codelineno-67-18" href="#__codelineno-67-18"></a>    <span class="n">payment_method</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-67-19" name="__codelineno-67-19" href="#__codelineno-67-19"></a>    <span class="n">discount_codes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-67-20" name="__codelineno-67-20" href="#__codelineno-67-20"></a>    <span class="n">special_instructions</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-67-21" name="__codelineno-67-21" href="#__codelineno-67-21"></a>
+<a id="__codelineno-67-22" name="__codelineno-67-22" href="#__codelineno-67-22"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_customer_preferences</span><span class="p">(</span><span class="n">preferences</span><span class="p">:</span> <span class="n">CustomerPreferences</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-67-23" name="__codelineno-67-23" href="#__codelineno-67-23"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process customer preferences with type safety.&quot;&quot;&quot;</span>
+<a id="__codelineno-67-24" name="__codelineno-67-24" href="#__codelineno-67-24"></a>    <span class="c1"># Type checker knows these keys exist</span>
+<a id="__codelineno-67-25" name="__codelineno-67-25" href="#__codelineno-67-25"></a>    <span class="n">theme</span> <span class="o">=</span> <span class="n">preferences</span><span class="p">[</span><span class="s2">&quot;theme&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-26" name="__codelineno-67-26" href="#__codelineno-67-26"></a>    <span class="n">newsletter</span> <span class="o">=</span> <span class="n">preferences</span><span class="p">[</span><span class="s2">&quot;newsletter&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-27" name="__codelineno-67-27" href="#__codelineno-67-27"></a>
+<a id="__codelineno-67-28" name="__codelineno-67-28" href="#__codelineno-67-28"></a>    <span class="c1"># Optional fields need checking</span>
+<a id="__codelineno-67-29" name="__codelineno-67-29" href="#__codelineno-67-29"></a>    <span class="k">if</span> <span class="s2">&quot;notifications&quot;</span> <span class="ow">in</span> <span class="n">preferences</span><span class="p">:</span>
+<a id="__codelineno-67-30" name="__codelineno-67-30" href="#__codelineno-67-30"></a>        <span class="n">notifications</span> <span class="o">=</span> <span class="n">preferences</span><span class="p">[</span><span class="s2">&quot;notifications&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-31" name="__codelineno-67-31" href="#__codelineno-67-31"></a>
+<a id="__codelineno-67-32" name="__codelineno-67-32" href="#__codelineno-67-32"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_order_from_dict</span><span class="p">(</span><span class="n">order_data</span><span class="p">:</span> <span class="n">OrderDetails</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Order</span><span class="p">:</span>
+<a id="__codelineno-67-33" name="__codelineno-67-33" href="#__codelineno-67-33"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create order from typed dictionary.&quot;&quot;&quot;</span>
+<a id="__codelineno-67-34" name="__codelineno-67-34" href="#__codelineno-67-34"></a>    <span class="c1"># Required fields are guaranteed to exist</span>
+<a id="__codelineno-67-35" name="__codelineno-67-35" href="#__codelineno-67-35"></a>    <span class="n">items</span> <span class="o">=</span> <span class="n">order_data</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-36" name="__codelineno-67-36" href="#__codelineno-67-36"></a>    <span class="n">shipping</span> <span class="o">=</span> <span class="n">order_data</span><span class="p">[</span><span class="s2">&quot;shipping_address&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-37" name="__codelineno-67-37" href="#__codelineno-67-37"></a>    <span class="n">payment</span> <span class="o">=</span> <span class="n">order_data</span><span class="p">[</span><span class="s2">&quot;payment_method&quot;</span><span class="p">]</span>
+<a id="__codelineno-67-38" name="__codelineno-67-38" href="#__codelineno-67-38"></a>
+<a id="__codelineno-67-39" name="__codelineno-67-39" href="#__codelineno-67-39"></a>    <span class="c1"># Optional fields need safe access</span>
+<a id="__codelineno-67-40" name="__codelineno-67-40" href="#__codelineno-67-40"></a>    <span class="n">billing</span> <span class="o">=</span> <span class="n">order_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;billing_address&quot;</span><span class="p">)</span>
+<a id="__codelineno-67-41" name="__codelineno-67-41" href="#__codelineno-67-41"></a>    <span class="n">instructions</span> <span class="o">=</span> <span class="n">order_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;special_instructions&quot;</span><span class="p">)</span>
+<a id="__codelineno-67-42" name="__codelineno-67-42" href="#__codelineno-67-42"></a>
+<a id="__codelineno-67-43" name="__codelineno-67-43" href="#__codelineno-67-43"></a>    <span class="k">return</span> <span class="n">Order</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="type-safety-in-testing"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#type-safety-in-testing">Type Safety in Testing</a></h3>
+<p>Type hints make tests more reliable and expressive:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># tests/unit/domain/test_customer.py</span>
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+<a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.domain.entities.customer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Customer</span><span class="p">,</span> <span class="n">CustomerCreated</span>
+<a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">src.shared_kernel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomerId</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Address</span>
+<a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a>
+<a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">TestCustomer</span><span class="p">:</span>
+<a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">test_customer_creation_with_factory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Test creating a customer using the factory method.&quot;&quot;&quot;</span>
+<a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a>        <span class="n">customer_id</span> <span class="o">=</span> <span class="n">CustomerId</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>
+<a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a>        <span class="n">email</span> <span class="o">=</span> <span class="n">Email</span><span class="p">(</span><span class="s2">&quot;john@example.com&quot;</span><span class="p">)</span>
+<a id="__codelineno-68-12" name="__codelineno-68-12" href="#__codelineno-68-12"></a>
+<a id="__codelineno-68-13" name="__codelineno-68-13" href="#__codelineno-68-13"></a>        <span class="n">customer</span> <span class="o">=</span> <span class="n">Customer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-68-14" name="__codelineno-68-14" href="#__codelineno-68-14"></a>            <span class="n">customer_id</span><span class="o">=</span><span class="n">customer_id</span><span class="p">,</span>
+<a id="__codelineno-68-15" name="__codelineno-68-15" href="#__codelineno-68-15"></a>            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span>
+<a id="__codelineno-68-16" name="__codelineno-68-16" href="#__codelineno-68-16"></a>            <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
+<a id="__codelineno-68-17" name="__codelineno-68-17" href="#__codelineno-68-17"></a>            <span class="n">preferences</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;dark&quot;</span><span class="p">},</span>
+<a id="__codelineno-68-18" name="__codelineno-68-18" href="#__codelineno-68-18"></a>        <span class="p">)</span>
+<a id="__codelineno-68-19" name="__codelineno-68-19" href="#__codelineno-68-19"></a>
+<a id="__codelineno-68-20" name="__codelineno-68-20" href="#__codelineno-68-20"></a>        <span class="c1"># Type hints ensure correct assertions</span>
+<a id="__codelineno-68-21" name="__codelineno-68-21" href="#__codelineno-68-21"></a>        <span class="k">assert</span> <span class="n">customer</span><span class="o">.</span><span class="n">customer_id</span> <span class="o">==</span> <span class="n">customer_id</span>
+<a id="__codelineno-68-22" name="__codelineno-68-22" href="#__codelineno-68-22"></a>        <span class="k">assert</span> <span class="n">customer</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;John Doe&quot;</span>
+<a id="__codelineno-68-23" name="__codelineno-68-23" href="#__codelineno-68-23"></a>        <span class="k">assert</span> <span class="n">customer</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">email</span>
+<a id="__codelineno-68-24" name="__codelineno-68-24" href="#__codelineno-68-24"></a>        <span class="k">assert</span> <span class="n">customer</span><span class="o">.</span><span class="n">is_active</span> <span class="ow">is</span> <span class="kc">True</span>
+<a id="__codelineno-68-25" name="__codelineno-68-25" href="#__codelineno-68-25"></a>        <span class="k">assert</span> <span class="n">customer</span><span class="o">.</span><span class="n">preferences</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;dark&quot;</span><span class="p">}</span>
+<a id="__codelineno-68-26" name="__codelineno-68-26" href="#__codelineno-68-26"></a>
+<a id="__codelineno-68-27" name="__codelineno-68-27" href="#__codelineno-68-27"></a>        <span class="c1"># Type-safe event checking</span>
+<a id="__codelineno-68-28" name="__codelineno-68-28" href="#__codelineno-68-28"></a>        <span class="n">events</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">DomainEvent</span><span class="p">]</span> <span class="o">=</span> <span class="n">customer</span><span class="o">.</span><span class="n">collect_domain_events</span><span class="p">()</span>
+<a id="__codelineno-68-29" name="__codelineno-68-29" href="#__codelineno-68-29"></a>        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">events</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<a id="__codelineno-68-30" name="__codelineno-68-30" href="#__codelineno-68-30"></a>
+<a id="__codelineno-68-31" name="__codelineno-68-31" href="#__codelineno-68-31"></a>        <span class="c1"># Type narrowing with isinstance</span>
+<a id="__codelineno-68-32" name="__codelineno-68-32" href="#__codelineno-68-32"></a>        <span class="n">event</span> <span class="o">=</span> <span class="n">events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-68-33" name="__codelineno-68-33" href="#__codelineno-68-33"></a>        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">CustomerCreated</span><span class="p">)</span>
+<a id="__codelineno-68-34" name="__codelineno-68-34" href="#__codelineno-68-34"></a>        <span class="c1"># Now event is known to be CustomerCreated</span>
+<a id="__codelineno-68-35" name="__codelineno-68-35" href="#__codelineno-68-35"></a>        <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">customer_id</span> <span class="o">==</span> <span class="n">customer_id</span>
+<a id="__codelineno-68-36" name="__codelineno-68-36" href="#__codelineno-68-36"></a>        <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">customer_name</span> <span class="o">==</span> <span class="s2">&quot;John Doe&quot;</span>
+<a id="__codelineno-68-37" name="__codelineno-68-37" href="#__codelineno-68-37"></a>
+<a id="__codelineno-68-38" name="__codelineno-68-38" href="#__codelineno-68-38"></a><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<a id="__codelineno-68-39" name="__codelineno-68-39" href="#__codelineno-68-39"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample_customer</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-68-40" name="__codelineno-68-40" href="#__codelineno-68-40"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a sample customer for testing.&quot;&quot;&quot;</span>
+<a id="__codelineno-68-41" name="__codelineno-68-41" href="#__codelineno-68-41"></a>    <span class="k">return</span> <span class="n">Customer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-68-42" name="__codelineno-68-42" href="#__codelineno-68-42"></a>        <span class="n">customer_id</span><span class="o">=</span><span class="n">CustomerId</span><span class="p">(</span><span class="n">uuid4</span><span class="p">()),</span>
+<a id="__codelineno-68-43" name="__codelineno-68-43" href="#__codelineno-68-43"></a>        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Customer&quot;</span><span class="p">,</span>
+<a id="__codelineno-68-44" name="__codelineno-68-44" href="#__codelineno-68-44"></a>        <span class="n">email</span><span class="o">=</span><span class="n">Email</span><span class="p">(</span><span class="s2">&quot;test@example.com&quot;</span><span class="p">),</span>
+<a id="__codelineno-68-45" name="__codelineno-68-45" href="#__codelineno-68-45"></a>    <span class="p">)</span>
+<a id="__codelineno-68-46" name="__codelineno-68-46" href="#__codelineno-68-46"></a>
+<a id="__codelineno-68-47" name="__codelineno-68-47" href="#__codelineno-68-47"></a><span class="k">def</span><span class="w"> </span><span class="nf">test_customer_operations</span><span class="p">(</span><span class="n">sample_customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-68-48" name="__codelineno-68-48" href="#__codelineno-68-48"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Test customer operations with typed fixture.&quot;&quot;&quot;</span>
+<a id="__codelineno-68-49" name="__codelineno-68-49" href="#__codelineno-68-49"></a>    <span class="c1"># Type hints ensure correct usage</span>
+<a id="__codelineno-68-50" name="__codelineno-68-50" href="#__codelineno-68-50"></a>    <span class="k">assert</span> <span class="n">sample_customer</span><span class="o">.</span><span class="n">is_active</span>
+<a id="__codelineno-68-51" name="__codelineno-68-51" href="#__codelineno-68-51"></a>
+<a id="__codelineno-68-52" name="__codelineno-68-52" href="#__codelineno-68-52"></a>    <span class="n">deactivated</span> <span class="o">=</span> <span class="n">sample_customer</span><span class="o">.</span><span class="n">deactivate</span><span class="p">(</span><span class="s2">&quot;Testing&quot;</span><span class="p">)</span>
+<a id="__codelineno-68-53" name="__codelineno-68-53" href="#__codelineno-68-53"></a>    <span class="k">assert</span> <span class="ow">not</span> <span class="n">deactivated</span><span class="o">.</span><span class="n">is_active</span>
+</code></pre></div>
+<h3 id="gradual-typing-strategy"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#gradual-typing-strategy">Gradual Typing Strategy</a></h3>
+<p>Don't try to add type hints everywhere at once. Use a gradual approach:</p>
+<h4 id="phase-1-core-domain-models"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#phase-1-core-domain-models">Phase 1: Core Domain Models</a></h4>
+<p>Start with your most important business logic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="c1"># Phase 1: Domain entities and value objects</span>
+<a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Customer</span><span class="p">:</span>
+<a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>    <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span>  <span class="c1"># Strong typing for identifiers</span>
+<a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>    <span class="n">email</span><span class="p">:</span> <span class="n">Email</span>  <span class="c1"># Value object with validation</span>
+<a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>    <span class="n">is_active</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<h4 id="phase-2-repository-interfaces"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#phase-2-repository-interfaces">Phase 2: Repository Interfaces</a></h4>
+<p>Add types to your abstraction boundaries:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="c1"># Phase 2: Repository and service interfaces</span>
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomerRepository</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer</span><span class="p">:</span> <span class="n">Customer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a>        <span class="k">pass</span>
+<a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a>
+<a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a>    <span class="nd">@abstractmethod</span> 
+<a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">find_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_id</span><span class="p">:</span> <span class="n">CustomerId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a>        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="phase-3-use-cases-and-application-layer"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#phase-3-use-cases-and-application-layer">Phase 3: Use Cases and Application Layer</a></h4>
+<p>Type your application workflows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="c1"># Phase 3: Use cases and application services</span>
+<a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">CreateCustomerUseCase</span><span class="p">:</span>
+<a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customer_repo</span><span class="p">:</span> <span class="n">CustomerRepository</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_customer_repo</span> <span class="o">=</span> <span class="n">customer_repo</span>
+<a id="__codelineno-71-5" name="__codelineno-71-5" href="#__codelineno-71-5"></a>
+<a id="__codelineno-71-6" name="__codelineno-71-6" href="#__codelineno-71-6"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">:</span> <span class="n">CreateCustomerCommand</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-71-7" name="__codelineno-71-7" href="#__codelineno-71-7"></a>        <span class="c1"># Typed implementation</span>
+<a id="__codelineno-71-8" name="__codelineno-71-8" href="#__codelineno-71-8"></a>        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="phase-4-infrastructure-and-presentation"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#phase-4-infrastructure-and-presentation">Phase 4: Infrastructure and Presentation</a></h4>
+<p>Finally, type your outer layers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="c1"># Phase 4: FastAPI endpoints with full typing</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/customers&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span><span class="n">CustomerResponse</span><span class="p">)</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create_customer</span><span class="p">(</span>
+<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a>    <span class="n">request</span><span class="p">:</span> <span class="n">CreateCustomerRequest</span><span class="p">,</span>
+<a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a>    <span class="n">customer_repo</span><span class="p">:</span> <span class="n">CustomerRepository</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_customer_repository</span><span class="p">),</span>
+<a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CustomerResponse</span><span class="p">:</span>
+<a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a>    <span class="n">use_case</span> <span class="o">=</span> <span class="n">CreateCustomerUseCase</span><span class="p">(</span><span class="n">customer_repo</span><span class="p">)</span>
+<a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a>    <span class="n">customer</span> <span class="o">=</span> <span class="k">await</span> <span class="n">use_case</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">CreateCustomerCommand</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+<a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a>    <span class="k">return</span> <span class="n">CustomerResponse</span><span class="o">.</span><span class="n">from_domain</span><span class="p">(</span><span class="n">customer</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="common-type-hint-mistakes"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#common-type-hint-mistakes">Common Type Hint Mistakes</a></h3>
+<h4 id="1-overusing-any"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#1-overusing-any">1. Overusing <code>Any</code></a></h4>
+<p><code>Any</code> defeats the purpose of type hints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="c1"># Bad - Any provides no type safety</span>
+<a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">some_method</span><span class="p">()</span>
+<a id="__codelineno-73-4" name="__codelineno-73-4" href="#__codelineno-73-4"></a>
+<a id="__codelineno-73-5" name="__codelineno-73-5" href="#__codelineno-73-5"></a><span class="c1"># Good - Use specific types or generics</span>
+<a id="__codelineno-73-6" name="__codelineno-73-6" href="#__codelineno-73-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span>
+<a id="__codelineno-73-7" name="__codelineno-73-7" href="#__codelineno-73-7"></a><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<a id="__codelineno-73-8" name="__codelineno-73-8" href="#__codelineno-73-8"></a>
+<a id="__codelineno-73-9" name="__codelineno-73-9" href="#__codelineno-73-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">ProcessableData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProcessedResult</span><span class="p">:</span>
+<a id="__codelineno-73-10" name="__codelineno-73-10" href="#__codelineno-73-10"></a>    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+<a id="__codelineno-73-11" name="__codelineno-73-11" href="#__codelineno-73-11"></a>
+<a id="__codelineno-73-12" name="__codelineno-73-12" href="#__codelineno-73-12"></a><span class="c1"># Or use Protocol for duck typing</span>
+<a id="__codelineno-73-13" name="__codelineno-73-13" href="#__codelineno-73-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">Processable</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<a id="__codelineno-73-14" name="__codelineno-73-14" href="#__codelineno-73-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProcessedResult</span><span class="p">:</span> <span class="o">...</span>
+<a id="__codelineno-73-15" name="__codelineno-73-15" href="#__codelineno-73-15"></a>
+<a id="__codelineno-73-16" name="__codelineno-73-16" href="#__codelineno-73-16"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Processable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ProcessedResult</span><span class="p">:</span>
+<a id="__codelineno-73-17" name="__codelineno-73-17" href="#__codelineno-73-17"></a>    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="2-ignoring-none-values"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#2-ignoring-none-values">2. Ignoring None Values</a></h4>
+<p>The most common runtime error in Python:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="c1"># Bad - ignoring potential None</span>
+<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_customer_email</span><span class="p">(</span><span class="n">customer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>    <span class="n">customer</span> <span class="o">=</span> <span class="n">find_customer</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>  <span class="c1"># Returns Customer | None</span>
+<a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>    <span class="k">return</span> <span class="n">customer</span><span class="o">.</span><span class="n">email</span>  <span class="c1"># ❌ AttributeError if customer is None</span>
+<a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a>
+<a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a><span class="c1"># Good - handling None explicitly</span>
+<a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_customer_email</span><span class="p">(</span><span class="n">customer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a>    <span class="n">customer</span> <span class="o">=</span> <span class="n">find_customer</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>  <span class="c1"># Returns Customer | None</span>
+<a id="__codelineno-74-9" name="__codelineno-74-9" href="#__codelineno-74-9"></a>    <span class="k">if</span> <span class="n">customer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a>        <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-74-11" name="__codelineno-74-11" href="#__codelineno-74-11"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+<a id="__codelineno-74-12" name="__codelineno-74-12" href="#__codelineno-74-12"></a>
+<a id="__codelineno-74-13" name="__codelineno-74-13" href="#__codelineno-74-13"></a><span class="c1"># Even better - use Optional handling patterns</span>
+<a id="__codelineno-74-14" name="__codelineno-74-14" href="#__codelineno-74-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_customer_email_safe</span><span class="p">(</span><span class="n">customer_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-74-15" name="__codelineno-74-15" href="#__codelineno-74-15"></a>    <span class="n">customer</span> <span class="o">=</span> <span class="n">find_customer</span><span class="p">(</span><span class="n">customer_id</span><span class="p">)</span>
+<a id="__codelineno-74-16" name="__codelineno-74-16" href="#__codelineno-74-16"></a>    <span class="k">if</span> <span class="n">customer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-74-17" name="__codelineno-74-17" href="#__codelineno-74-17"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Customer </span><span class="si">{</span><span class="n">customer_id</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+<a id="__codelineno-74-18" name="__codelineno-74-18" href="#__codelineno-74-18"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">customer</span><span class="o">.</span><span class="n">email</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="3-mutable-default-arguments"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#3-mutable-default-arguments">3. Mutable Default Arguments</a></h4>
+<p>A classic Python gotcha made visible by type hints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="c1"># Bad - mutable default argument</span>
+<a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_customer</span><span class="p">(</span>
+<a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+<a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>    <span class="n">preferences</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># ❌ Shared mutable default</span>
+<a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-75-6" name="__codelineno-75-6" href="#__codelineno-75-6"></a>    <span class="c1"># All customers share the same preferences dict!</span>
+<a id="__codelineno-75-7" name="__codelineno-75-7" href="#__codelineno-75-7"></a>    <span class="k">return</span> <span class="n">Customer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">preferences</span><span class="o">=</span><span class="n">preferences</span><span class="p">)</span>
+<a id="__codelineno-75-8" name="__codelineno-75-8" href="#__codelineno-75-8"></a>
+<a id="__codelineno-75-9" name="__codelineno-75-9" href="#__codelineno-75-9"></a><span class="c1"># Good - use None with factory</span>
+<a id="__codelineno-75-10" name="__codelineno-75-10" href="#__codelineno-75-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">create_customer</span><span class="p">(</span>
+<a id="__codelineno-75-11" name="__codelineno-75-11" href="#__codelineno-75-11"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-75-12" name="__codelineno-75-12" href="#__codelineno-75-12"></a>    <span class="n">preferences</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-75-13" name="__codelineno-75-13" href="#__codelineno-75-13"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Customer</span><span class="p">:</span>
+<a id="__codelineno-75-14" name="__codelineno-75-14" href="#__codelineno-75-14"></a>    <span class="k">if</span> <span class="n">preferences</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-75-15" name="__codelineno-75-15" href="#__codelineno-75-15"></a>        <span class="n">preferences</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># New dict for each call</span>
+<a id="__codelineno-75-16" name="__codelineno-75-16" href="#__codelineno-75-16"></a>    <span class="k">return</span> <span class="n">Customer</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">preferences</span><span class="o">=</span><span class="n">preferences</span><span class="p">)</span>
+<a id="__codelineno-75-17" name="__codelineno-75-17" href="#__codelineno-75-17"></a>
+<a id="__codelineno-75-18" name="__codelineno-75-18" href="#__codelineno-75-18"></a><span class="c1"># Best - use factory pattern from dataclass</span>
+<a id="__codelineno-75-19" name="__codelineno-75-19" href="#__codelineno-75-19"></a><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">field</span>
+<a id="__codelineno-75-20" name="__codelineno-75-20" href="#__codelineno-75-20"></a>
+<a id="__codelineno-75-21" name="__codelineno-75-21" href="#__codelineno-75-21"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-75-22" name="__codelineno-75-22" href="#__codelineno-75-22"></a><span class="k">class</span><span class="w"> </span><span class="nc">Customer</span><span class="p">:</span>
+<a id="__codelineno-75-23" name="__codelineno-75-23" href="#__codelineno-75-23"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-75-24" name="__codelineno-75-24" href="#__codelineno-75-24"></a>    <span class="n">preferences</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>  <span class="c1"># ✅ New dict per instance</span>
+</code></pre></div>
+<h3 id="type-hints-and-performance"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#type-hints-and-performance">Type Hints and Performance</a></h3>
+<p>Type hints have minimal runtime overhead but provide development-time benefits:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
+<a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<a id="__codelineno-76-3" name="__codelineno-76-3" href="#__codelineno-76-3"></a>
+<a id="__codelineno-76-4" name="__codelineno-76-4" href="#__codelineno-76-4"></a><span class="c1"># Function without type hints</span>
+<a id="__codelineno-76-5" name="__codelineno-76-5" href="#__codelineno-76-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_items_untyped</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<a id="__codelineno-76-6" name="__codelineno-76-6" href="#__codelineno-76-6"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<a id="__codelineno-76-7" name="__codelineno-76-7" href="#__codelineno-76-7"></a>
+<a id="__codelineno-76-8" name="__codelineno-76-8" href="#__codelineno-76-8"></a><span class="c1"># Function with type hints</span>
+<a id="__codelineno-76-9" name="__codelineno-76-9" href="#__codelineno-76-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">process_items_typed</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<a id="__codelineno-76-10" name="__codelineno-76-10" href="#__codelineno-76-10"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span> <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+<a id="__codelineno-76-11" name="__codelineno-76-11" href="#__codelineno-76-11"></a>
+<a id="__codelineno-76-12" name="__codelineno-76-12" href="#__codelineno-76-12"></a><span class="c1"># Performance is identical at runtime</span>
+<a id="__codelineno-76-13" name="__codelineno-76-13" href="#__codelineno-76-13"></a><span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+<a id="__codelineno-76-14" name="__codelineno-76-14" href="#__codelineno-76-14"></a><span class="n">threshold</span> <span class="o">=</span> <span class="mi">5000</span>
+<a id="__codelineno-76-15" name="__codelineno-76-15" href="#__codelineno-76-15"></a>
+<a id="__codelineno-76-16" name="__codelineno-76-16" href="#__codelineno-76-16"></a><span class="n">time_untyped</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span>
+<a id="__codelineno-76-17" name="__codelineno-76-17" href="#__codelineno-76-17"></a>    <span class="k">lambda</span><span class="p">:</span> <span class="n">process_items_untyped</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threshold</span><span class="p">),</span> 
+<a id="__codelineno-76-18" name="__codelineno-76-18" href="#__codelineno-76-18"></a>    <span class="n">number</span><span class="o">=</span><span class="mi">1000</span>
+<a id="__codelineno-76-19" name="__codelineno-76-19" href="#__codelineno-76-19"></a><span class="p">)</span>
+<a id="__codelineno-76-20" name="__codelineno-76-20" href="#__codelineno-76-20"></a>
+<a id="__codelineno-76-21" name="__codelineno-76-21" href="#__codelineno-76-21"></a><span class="n">time_typed</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span>
+<a id="__codelineno-76-22" name="__codelineno-76-22" href="#__codelineno-76-22"></a>    <span class="k">lambda</span><span class="p">:</span> <span class="n">process_items_typed</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">threshold</span><span class="p">),</span>
+<a id="__codelineno-76-23" name="__codelineno-76-23" href="#__codelineno-76-23"></a>    <span class="n">number</span><span class="o">=</span><span class="mi">1000</span>
+<a id="__codelineno-76-24" name="__codelineno-76-24" href="#__codelineno-76-24"></a><span class="p">)</span>
+<a id="__codelineno-76-25" name="__codelineno-76-25" href="#__codelineno-76-25"></a>
+<a id="__codelineno-76-26" name="__codelineno-76-26" href="#__codelineno-76-26"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Untyped: </span><span class="si">{</span><span class="n">time_untyped</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<a id="__codelineno-76-27" name="__codelineno-76-27" href="#__codelineno-76-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Typed: </span><span class="si">{</span><span class="n">time_typed</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<a id="__codelineno-76-28" name="__codelineno-76-28" href="#__codelineno-76-28"></a><span class="c1"># Performance difference is negligible</span>
+</code></pre></div>
+<p>The real performance benefit comes from catching bugs early:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="c1"># Type hints catch bugs at development time that would cause</span>
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="c1"># expensive runtime errors in production</span>
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_discount</span><span class="p">(</span>
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a>    <span class="n">order_total</span><span class="p">:</span> <span class="n">Money</span><span class="p">,</span>
+<a id="__codelineno-77-6" name="__codelineno-77-6" href="#__codelineno-77-6"></a>    <span class="n">discount_percentage</span><span class="p">:</span> <span class="n">Decimal</span>
+<a id="__codelineno-77-7" name="__codelineno-77-7" href="#__codelineno-77-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Money</span><span class="p">:</span>
+<a id="__codelineno-77-8" name="__codelineno-77-8" href="#__codelineno-77-8"></a>    <span class="c1"># Type checker ensures Money and Decimal are used correctly</span>
+<a id="__codelineno-77-9" name="__codelineno-77-9" href="#__codelineno-77-9"></a>    <span class="c1"># Prevents runtime TypeError that could crash in production</span>
+<a id="__codelineno-77-10" name="__codelineno-77-10" href="#__codelineno-77-10"></a>    <span class="k">return</span> <span class="n">order_total</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">discount_percentage</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-77-11" name="__codelineno-77-11" href="#__codelineno-77-11"></a>
+<a id="__codelineno-77-12" name="__codelineno-77-12" href="#__codelineno-77-12"></a><span class="c1"># Without type hints, this error only appears at runtime:</span>
+<a id="__codelineno-77-13" name="__codelineno-77-13" href="#__codelineno-77-13"></a><span class="c1"># calculate_discount(&quot;100.00&quot;, &quot;10&quot;)  # TypeError in production</span>
+<a id="__codelineno-77-14" name="__codelineno-77-14" href="#__codelineno-77-14"></a><span class="c1"># With type hints, caught immediately during development</span>
+</code></pre></div>
+<h3 id="integration-with-development-tools"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#integration-with-development-tools">Integration with Development Tools</a></h3>
+<p>Modern Python development tools understand type hints:</p>
+<h4 id="vs-code-integration"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#vs-code-integration">VS Code Integration</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="c1">// .vscode/settings.json</span>
+<a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="p">{</span>
+<a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a><span class="w">    </span><span class="nt">&quot;python.linting.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-78-4" name="__codelineno-78-4" href="#__codelineno-78-4"></a><span class="w">    </span><span class="nt">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-78-5" name="__codelineno-78-5" href="#__codelineno-78-5"></a><span class="w">    </span><span class="nt">&quot;python.linting.pycodestyleEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-78-6" name="__codelineno-78-6" href="#__codelineno-78-6"></a><span class="w">    </span><span class="nt">&quot;python.analysis.typeCheckingMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic&quot;</span><span class="p">,</span>
+<a id="__codelineno-78-7" name="__codelineno-78-7" href="#__codelineno-78-7"></a><span class="w">    </span><span class="nt">&quot;python.analysis.autoImportCompletions&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-78-8" name="__codelineno-78-8" href="#__codelineno-78-8"></a><span class="w">    </span><span class="nt">&quot;python.analysis.completeFunctionParens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-78-9" name="__codelineno-78-9" href="#__codelineno-78-9"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="pre-commit-hook-for-type-checking"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#pre-commit-hook-for-type-checking">Pre-commit Hook for Type Checking</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="c1"># .pre-commit-config.yaml</span>
+<a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a><span class="nt">repos</span><span class="p">:</span>
+<a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/mirrors-mypy</span>
+<a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a><span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.5.1</span>
+<a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a><span class="w">    </span><span class="nt">hooks</span><span class="p">:</span>
+<a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mypy</span>
+<a id="__codelineno-79-7" name="__codelineno-79-7" href="#__codelineno-79-7"></a><span class="w">        </span><span class="nt">additional_dependencies</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">types-requests</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<h4 id="cicd-integration"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#cicd-integration">CI/CD Integration</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="c1"># GitHub Actions workflow</span>
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Type Check</span>
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a><span class="w">  </span><span class="nt">type-check</span><span class="p">:</span>
+<a id="__codelineno-80-6" name="__codelineno-80-6" href="#__codelineno-80-6"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-80-7" name="__codelineno-80-7" href="#__codelineno-80-7"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-80-8" name="__codelineno-80-8" href="#__codelineno-80-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<a id="__codelineno-80-9" name="__codelineno-80-9" href="#__codelineno-80-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<a id="__codelineno-80-10" name="__codelineno-80-10" href="#__codelineno-80-10"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-80-11" name="__codelineno-80-11" href="#__codelineno-80-11"></a><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.11&#39;</span>
+<a id="__codelineno-80-12" name="__codelineno-80-12" href="#__codelineno-80-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<a id="__codelineno-80-13" name="__codelineno-80-13" href="#__codelineno-80-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pyright src/ tests/</span>
+</code></pre></div>
+<h3 id="conclusion"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#conclusion">Conclusion</a></h3>
+<p>Type hints transform Python from a "hope it works" language into a "know it works" language. They serve as executable documentation, catch bugs before they reach production, and make code self-explanatory to both humans and tools.</p>
+<p>The <a href="https://github.com/buildshift-dev/clean-py">clean-py repository</a> demonstrates that comprehensive typing doesn't sacrifice Python's expressiveness—it enhances it. By making implicit assumptions explicit, type hints create more reliable, maintainable, and professional Python applications.</p>
+<p>Key benefits of comprehensive type hints:</p>
+<ul>
+<li><strong>Early Bug Detection</strong>: Catch errors during development, not production</li>
+<li><strong>Better IDE Support</strong>: Auto-completion, refactoring, and navigation</li>
+<li><strong>Self-Documenting Code</strong>: Types explain intent better than comments</li>
+<li><strong>Refactoring Safety</strong>: Large-scale changes become less risky  </li>
+<li><strong>Team Communication</strong>: Clear contracts between code components</li>
+</ul>
+<p>Start small with your most critical domain models and gradually expand coverage. Modern Python's type system is powerful enough to express complex domain logic while remaining readable and maintainable.</p>
+<p>In the next post, we'll explore comprehensive testing strategies for Python microservices, showing how to build confidence in your typed, well-architected applications through systematic testing approaches.</p>
+<h3 id="references"><a class="toclink" href="../../2025/06/22/python-type-hints---your-first-line-of-defense/#references">References</a></h3>
+<ul>
+<li><a href="https://github.com/buildshift-dev/clean-py">Clean-Py Repository</a> - Complete type hint implementations</li>
+<li><a href="https://docs.python.org/3/library/typing.html">Python Type Hints Documentation</a> - Official typing module guide</li>
+<li><a href="https://mypy.readthedocs.io/">MyPy Documentation</a> - Static type checker for Python</li>
+<li><a href="https://pydantic.dev/">Pydantic V2</a> - Runtime type validation and serialization</li>
+</ul>
+<p>Remember: Type hints are not about restricting Python's flexibility—they're about making that flexibility safer and more predictable.</p>
+    
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 buildshift.dev
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/buildshift-dev" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/your-handle" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:contact@buildshift.dev" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.path", "navigation.top", "search.highlight", "search.share", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+        <script src="../../../assets/js/buildshift.js"></script>
+      
+    
+  </body>
+</html>

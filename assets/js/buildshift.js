@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollEffects();
     initMobileMenu();
     fixSafariBrackets();
+    initMermaid();
 });
 
 // Safari iOS bracket fix
@@ -296,4 +297,36 @@ const optimizedScrollHandler = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', optimizedScrollHandler);
+
+// Initialize Mermaid diagrams
+function initMermaid() {
+    if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                primaryColor: '#3b82f6',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#1e40af',
+                lineColor: '#6b7280',
+                secondaryColor: '#1e293b',
+                tertiaryColor: '#374151',
+                background: '#0f172a',
+                mainBkg: '#1e293b',
+                secondBkg: '#334155',
+                tertiaryBkg: '#475569'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true
+            },
+            sequence: {
+                useMaxWidth: true
+            },
+            gantt: {
+                useMaxWidth: true
+            }
+        });
+    }
+}
 

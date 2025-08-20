@@ -77,7 +77,7 @@
                 </p>
                 <div class="hero-stats" style="margin-top: 2rem;">
                     <div class="stat-item">
-                        <div class="stat-number">3</div>
+                        <div class="stat-number">4</div>
                         <div class="stat-label">Active Projects</div>
                     </div>
                     <div class="stat-item">
@@ -360,6 +360,95 @@
                                 View Code
                             </a>
                             <a href="https://github.com/buildshift-dev/aws-egress-estimate" target="_blank" class="btn btn--primary">
+                                <i class="fas fa-book"></i>
+                                Documentation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clean Architecture .NET -->
+                <div class="project-showcase" data-category="devtools">
+                    <div class="project-preview">
+                        <div class="preview-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">buildshift-dev/clean-dotnet</span>
+                        </div>
+                        <div class="code-preview">
+                            <pre><code><span class="comment">// Clean Architecture .NET 8 with DDD</span>
+<span class="keyword">public class</span> <span class="property">Customer</span> : <span class="property">Entity</span>&lt;<span class="property">CustomerId</span>&gt;, <span class="property">IAggregateRoot</span>
+{
+    <span class="keyword">private readonly</span> <span class="property">List</span>&lt;<span class="property">Order</span>&gt; <span class="property">_orders</span> = <span class="keyword">new</span>();
+
+    <span class="keyword">public</span> <span class="property">Email</span> <span class="property">Email</span> { <span class="keyword">get</span>; <span class="keyword">private set</span>; }
+    <span class="keyword">public</span> <span class="property">string</span> <span class="property">Name</span> { <span class="keyword">get</span>; <span class="keyword">private set</span>; }
+    <span class="keyword">public</span> <span class="property">IReadOnlyCollection</span>&lt;<span class="property">Order</span>&gt; <span class="property">Orders</span> => <span class="property">_orders</span>.<span class="property">AsReadOnly</span>();
+
+    <span class="keyword">public</span> <span class="property">Result</span>&lt;<span class="property">Order</span>&gt; <span class="property">CreateOrder</span>(<span class="property">Money</span> <span class="property">totalAmount</span>)
+    {
+        <span class="keyword">var</span> <span class="property">order</span> = <span class="keyword">new</span> <span class="property">Order</span>(<span class="property">Id</span>, <span class="property">totalAmount</span>);
+        <span class="property">_orders</span>.<span class="property">Add</span>(<span class="property">order</span>);
+        
+        <span class="property">AddDomainEvent</span>(<span class="keyword">new</span> <span class="property">OrderCreatedEvent</span>(<span class="property">order</span>));
+        <span class="keyword">return</span> <span class="property">Result</span>.<span class="property">Success</span>(<span class="property">order</span>);
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="project-details">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3>Clean Architecture .NET 8</h3>
+                                <p class="project-description">
+                                    Production-ready demonstration of Clean Architecture principles and Domain-Driven Design 
+                                    patterns implemented in .NET 8. Features CQRS with MediatR, comprehensive testing, 
+                                    and AWS ECS Fargate deployment with CloudFormation.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Clean Architecture</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>CQRS & MediatR</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Strong Typing</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>AWS ECS Fargate</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">.NET 8</span>
+                            <span class="tech-tag">ASP.NET Core</span>
+                            <span class="tech-tag">Entity Framework</span>
+                            <span class="tech-tag">CloudFormation</span>
+                            <span class="tech-tag">Clean Architecture</span>
+                            <span class="tech-tag">CQRS</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/buildshift-dev/clean-dotnet" target="_blank" class="btn btn--outline">
+                                <i class="fab fa-github"></i>
+                                View Code
+                            </a>
+                            <a href="https://github.com/buildshift-dev/clean-dotnet" target="_blank" class="btn btn--primary">
                                 <i class="fas fa-book"></i>
                                 Documentation
                             </a>
