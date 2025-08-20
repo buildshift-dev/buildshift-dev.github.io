@@ -218,15 +218,23 @@ function initMobileMenu() {
     });
 }
 
-// Smooth scrolling for anchor links
+// Smooth scrolling for anchor links with header offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Calculate the total offset needed:
+            // - Fixed announcement banner: 40px
+            // - Material Design header: ~64px  
+            // - Additional padding for visual breathing room: 20px
+            const headerOffset = 124;
+            const elementPosition = target.offsetTop;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
         }
     });

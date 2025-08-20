@@ -2,6 +2,16 @@
 
 /* ===== MKDOCS MATERIAL THEME CUSTOMIZATIONS ===== */
 
+/* Global scroll padding to account for fixed header */
+html {
+  scroll-padding-top: 124px;
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Logo customization - {} symbol */
 .md-header__button.md-logo img,
 .md-nav__button.md-logo img {
